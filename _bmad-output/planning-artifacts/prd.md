@@ -1,0 +1,1 @@
+../../japan_ski_prd.md
