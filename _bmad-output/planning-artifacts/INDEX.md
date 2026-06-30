@@ -27,14 +27,22 @@ Use this file to decide **what to read** before coding. You do **not** need the 
 | Home / hero / resort cards (2.2–2.3) | [`epics/epic-02-discover.md`](epics/epic-02-discover.md) → [`prd/03-features-discovery.md`](prd/03-features-discovery.md) | ~200 |
 | Filters / search / Explore (2.4–2.6) | [`epics/epic-02-discover.md`](epics/epic-02-discover.md) → [`prd/03-features-discovery.md`](prd/03-features-discovery.md) | ~200 |
 | Resort detail (Epic 3) | [`epics/epic-03-detail.md`](epics/epic-03-detail.md) → [`prd/05-features-detail-getting-there.md`](prd/05-features-detail-getting-there.md) | ~250 |
-| Resort user reviews (Phase 3 — deferred) | [`epics/phase-3-user-community.md`](epics/phase-3-user-community.md) | ~80 |
+| **Phase 2 (auth, UGC, maps, trips)** | [`epics/epics-phase2.md`](epics/epics-phase2.md) → [`ux-designs/ux-japan_winter_sport-2026-06-23/EXPERIENCE.md`](ux-designs/ux-japan_winter_sport-2026-06-23/EXPERIENCE.md) → [`architecture-phase2.md`](architecture-phase2.md) | ~900 |
+| **Phase 2 auth (Epic 9)** | [`epics/epic-09-supabase-auth.md`](epics/epic-09-supabase-auth.md) → [`architecture-phase2.md`](architecture-phase2.md) §3–4 | ~150 |
+| **Phase 2 nav & saved (Epic 10)** | [`epics/epic-10-nav-saved.md`](epics/epic-10-nav-saved.md) | ~100 |
+| **Phase 2 map (Epic 11)** | [`epics/epic-11-resort-map.md`](epics/epic-11-resort-map.md) → `CONTENT_MODEL.md` lat/lng | ~100 |
+| **Phase 2 reviews (Epic 12)** | [`epics/epic-12-community-reviews.md`](epics/epic-12-community-reviews.md) | ~120 |
+| **Phase 2 passport & profile (Epic 13)** | [`epics/epic-13-passport-profile.md`](epics/epic-13-passport-profile.md) | ~120 |
+| **Phase 2 trips (Epic 14)** | [`epics/epic-14-trip-planning.md`](epics/epic-14-trip-planning.md) | ~80 |
+| **Phase 2 launch (Epic 15)** | [`epics/epic-15-phase2-launch.md`](epics/epic-15-phase2-launch.md) → `docs/tracking-plan.md` | ~100 |
+| Review AI theme summaries (Phase 3 — deferred) | [`epics/phase-3-user-community.md`](epics/phase-3-user-community.md) | ~80 |
 | AI chat (Phase 3 — deferred) | [`epics/phase-3-monetisation-ai.md`](epics/phase-3-monetisation-ai.md) → [`epics/epic-04-ai-assistant.md`](epics/epic-04-ai-assistant.md) → [`prd/06-features-ai-chat.md`](prd/06-features-ai-chat.md) | ~300 |
 | Info / legal / launch (Epic 5) | [`epics/epic-05-launch.md`](epics/epic-05-launch.md) → [`prd/07-features-info.md`](prd/07-features-info.md) | ~150 |
 | **Phase 1 improvements (Epic 6)** | [`epics/epic-06-phase1-improvements.md`](epics/epic-06-phase1-improvements.md) → [`prd/16-phase1-improvements.md`](prd/16-phase1-improvements.md) | ~200 |
 | **Phase 1 UX wave 2 (Epic 7)** | [`epics/epic-07-phase1-ux-wave2.md`](epics/epic-07-phase1-ux-wave2.md) → [`prd/17-phase1-improvements-wave2.md`](prd/17-phase1-improvements-wave2.md) | ~250 |
 | App foundation (Epic 1) | [`epics/epic-01-foundation.md`](epics/epic-01-foundation.md) → [`../planning-artifacts/architecture.md`](../planning-artifacts/architecture.md) | ~200 |
-| Design tokens / components | [`../planning-artifacts/ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md`](../planning-artifacts/ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md) → [`prd/12-ux-theme-and-layout.md`](prd/12-ux-theme-and-layout.md) | varies |
-| User flows / personas | [`../planning-artifacts/ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md`](../planning-artifacts/ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md) | ~250 |
+| Design tokens / components | [`ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md`](ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md) (Phase 1) · Phase 2: [`ux-designs/ux-japan_winter_sport-2026-06-23/DESIGN.md`](ux-designs/ux-japan_winter_sport-2026-06-23/DESIGN.md) | varies |
+| User flows / personas | [`ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md`](ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md) (Phase 1) · Phase 2: [`ux-designs/ux-japan_winter_sport-2026-06-23/EXPERIENCE.md`](ux-designs/ux-japan_winter_sport-2026-06-23/EXPERIENCE.md) | ~350 |
 | Analytics events | [`../../docs/tracking-plan.md`](../../docs/tracking-plan.md) (authoritative) → [`prd/15-analytics-legal-glossary.md`](prd/15-analytics-legal-glossary.md) |
 | Quiz scoring | [`../../docs/quiz-scoring.md`](../../docs/quiz-scoring.md) | ~100 |
 | Resort content / markdown | [`../../content/CONTENT_MODEL.md`](../../content/CONTENT_MODEL.md) → [`prd/10-content-and-decisions.md`](prd/10-content-and-decisions.md) | varies |
@@ -83,7 +91,15 @@ Use this file to decide **what to read** before coding. You do **not** need the 
 | [`epics/epic-05-launch.md`](epics/epic-05-launch.md) | Stories 5.1–5.5 |
 | [`epics/epic-06-phase1-improvements.md`](epics/epic-06-phase1-improvements.md) | Stories 6.1–6.12 (Phase 1.1) |
 | [`epics/epic-07-phase1-ux-wave2.md`](epics/epic-07-phase1-ux-wave2.md) | Stories 7.1–7.6 (Phase 1.2) |
-| [`epics/phase-3-user-community.md`](epics/phase-3-user-community.md) | FR-8 resort reviews (Phase 3, deferred) |
+| [**`epics/epics-phase2.md`**](epics/epics-phase2.md) | **Phase 2 master** — Stories 9.1–15.4 (27 stories) |
+| [`epics/epic-09-supabase-auth.md`](epics/epic-09-supabase-auth.md) | Stories 9.1–9.5 (FR-8) |
+| [`epics/epic-10-nav-saved.md`](epics/epic-10-nav-saved.md) | Stories 10.1–10.4 (FR-15, FR-16) |
+| [`epics/epic-11-resort-map.md`](epics/epic-11-resort-map.md) | Stories 11.1–11.3 (FR-9) |
+| [`epics/epic-12-community-reviews.md`](epics/epic-12-community-reviews.md) | Stories 12.1–12.4 (FR-10) — **reviews shipped Phase 2** |
+| [`epics/epic-13-passport-profile.md`](epics/epic-13-passport-profile.md) | Stories 13.1–13.4 (FR-11, FR-17) |
+| [`epics/epic-14-trip-planning.md`](epics/epic-14-trip-planning.md) | Stories 14.1–14.3 (FR-12) |
+| [`epics/epic-15-phase2-launch.md`](epics/epic-15-phase2-launch.md) | Stories 15.1–15.4 (FR-13, FR-14, launch) |
+| [`epics/phase-3-user-community.md`](epics/phase-3-user-community.md) | Review **AI theme summaries** only (Phase 3); core UGC → Epic 12 |
 
 **Full source:** [`epics.md`](epics.md) (657 lines)
 
@@ -101,8 +117,10 @@ Self-contained implementation packets for a single capability. **Start here** wh
 | Doc | When to read |
 |-----|--------------|
 | [`architecture.md`](architecture.md) | Stack decisions, folder layout, cross-cutting patterns |
-| [`ux-designs/.../DESIGN.md`](ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md) | Theme A tokens, component visual spec |
-| [`ux-designs/.../EXPERIENCE.md`](ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md) | IA, flows, personas (Alex, Ninja) |
+| [`ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md`](ux-designs/ux-japan_winter_sport-2026-06-12/DESIGN.md) | Theme A tokens (Phase 1) |
+| [`ux-designs/ux-japan_winter_sport-2026-06-23/DESIGN.md`](ux-designs/ux-japan_winter_sport-2026-06-23/DESIGN.md) | Phase 2 component tokens + mocks |
+| [`ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md`](ux-designs/ux-japan_winter_sport-2026-06-12/EXPERIENCE.md) | IA, flows (Phase 1) |
+| [`ux-designs/ux-japan_winter_sport-2026-06-23/EXPERIENCE.md`](ux-designs/ux-japan_winter_sport-2026-06-23/EXPERIENCE.md) | Phase 2 IA, flows (UJ-1–5), states |
 | [`../../docs/tracking-plan.md`](../../docs/tracking-plan.md) | Event names/properties — **authoritative for analytics** |
 | [`../../content/CONTENT_MODEL.md`](../../content/CONTENT_MODEL.md) | Resort markdown schema |
 | [`../../web/AGENTS.md`](../../web/AGENTS.md) | Next.js app conventions |

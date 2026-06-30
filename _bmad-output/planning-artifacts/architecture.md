@@ -19,7 +19,9 @@ completedAt: 2026-06-12
 
 # Architecture Decision Document
 
-**Japan Ski & Snowboard Trip Planner** — Phase 1 foundation architecture for consistent AI-agent implementation.
+**Japan Ski & Snowboard Trip Planner (Powri)** — Phase 1 foundation architecture for consistent AI-agent implementation.
+
+> **Phase 2:** Read **[`architecture-phase2.md`](architecture-phase2.md)** for Supabase, UGC, maps, passport, and trips. SQL migration: [`supabase/migrations/001_phase2_core.sql`](../../supabase/migrations/001_phase2_core.sql).
 
 **Companion artifacts:**
 - PRD v1.1 (`japan_ski_prd.md`)
@@ -71,7 +73,8 @@ completedAt: 2026-06-12
 - **Solo + AI build:** Architecture must be explicit enough that multiple agent sessions produce compatible code
 - **Deployment target:** Vercel (aligned with Next.js serverless)
 - **External APIs (Phase 1):** Anthropic Claude, PostHog, Plausible, Unsplash (build/dev only until app approved)
-- **Deferred Phase 2+:** Supabase auth, Google Places, live snow search, Plan tab persistence
+- **Deferred Phase 3+:** live snow search, AI chat product surface, CMS editorial workflow
+- **Phase 2 (see [`architecture-phase2.md`](architecture-phase2.md)):** Supabase auth + PostgreSQL, Google Places proxy, Leaflet surroundings map, Plan tab trip skeleton, reviews/passport/saved
 
 ### Cross-Cutting Concerns Identified
 
@@ -155,12 +158,16 @@ npx create-next-app@latest web \
 - Vercel deployment + env var strategy
 - i18n scaffold (`next-intl` or lightweight custom — see below)
 
-**Deferred (Phase 2+):**
+**Deferred (Phase 3+):**
+- Live snow search + shared cache
+- CMS editorial workflow
+- AI chat product surface (Phase 3)
+
+**Moved to Phase 2** — see [`architecture-phase2.md`](architecture-phase2.md):
 - Supabase PostgreSQL + Auth
 - Google Places API proxy
-- Live snow search + shared cache
-- Leaflet map integration (Phase 2 accommodation)
-- CMS editorial workflow
+- Leaflet map (resort surroundings)
+- Plan tab trip skeleton persistence
 
 ### Data Architecture
 
@@ -209,7 +216,7 @@ getResortBySlug(slug) / getAllResorts()
 | CORS | `/api/*` same-origin only |
 | Dependencies | `npm audit` in CI; lockfile committed |
 
-**Phase 2 auth (documented, not built):** Supabase Auth with HTTP-only cookies; JWT not in localStorage.
+**Phase 2 auth:** Supabase Auth with HTTP-only cookies via `@supabase/ssr` — see [`architecture-phase2.md`](architecture-phase2.md) §4.
 
 ### API & Communication Patterns
 
@@ -588,10 +595,9 @@ All 5 epics / 27 stories map to defined directories. NFR-3–9 addressed in Secu
 - Explicit agent consistency rules
 
 **Areas for Future Enhancement:**
-- Supabase auth + Plan tab (Phase 3)
-- Upstash rate limiting + snow cache
-- Leaflet map module (Phase 2)
+- Upstash rate limiting + snow cache (Phase 3)
 - CMS export pipeline (Phase 3)
+- **Phase 2:** [`architecture-phase2.md`](architecture-phase2.md) — Supabase, UGC, maps, trips (2026-06-23)
 
 ### Implementation Handoff
 

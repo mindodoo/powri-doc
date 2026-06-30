@@ -1,39 +1,37 @@
-# Phase 3: User Community & Resort Reviews (Deferred)
+# Phase 3: User Community — AI Summaries (Deferred)
 
-**Gate:** Requires **user accounts / login** (Phase 2+) and product traction before UGC moderation investment.  
-**Product owner requirement:** PO-5 (2026-06-14) — experience reviews on resort detail pages.
+> **Update 2026-06-23:** Core resort reviews, comments, and moderation moved to **Phase 2 Epic 12** ([`epic-12-community-reviews.md`](epic-12-community-reviews.md), FR-10). Auth prerequisite is **Phase 2 Epic 9** (FR-8). This shard now covers **Phase 3-only** enhancements.
+
+**Gate:** Requires Epic 12 live with sufficient review volume before AI summarization investment.  
+**Product owner requirement:** PO-5 (2026-06-14) — experience reviews on resort detail pages (**Phase 2**).
 
 **Not Epic 6** — do not implement during Phase 1 improvements.
 
 ---
 
-## Vision
+## Vision (Phase 3 delta)
 
-Each resort detail page gains a **"How people experienced it"** section showing authentic visitor experiences. Over time, reviews can be **summarized into themes/genres** (e.g. "great for powder hunters", "crowded during CNY") to complement editorial highlights/lowlights.
+After Phase 2 ships structured reviews and flat comments, Phase 3 adds **AI-generated theme summaries** (e.g. "great for powder hunters", "crowded during CNY") to complement editorial highlights/lowlights.
+
+Individual reviews and comments are **Phase 2** — see Epic 12.
 
 ---
 
-## Functional requirement (draft FR-8)
+## Functional requirement (Phase 3 — draft)
 
 | ID | Requirement |
 |----|-------------|
-| **FR-8** | **Resort experience reviews** — logged-in users can submit structured experience feedback per resort; detail page displays aggregated community signal + individual reviews when authenticated |
+| **FR-10-P3** | **Review theme summaries** — when review count ≥ threshold, display AI-generated aggregate themes on resort detail Experience section |
 
 ### Acceptance criteria (high level — refine when epic is scheduled)
 
-**Given** I am logged in and viewed a resort detail page  
-**When** I submit an experience review (rating + short text + optional tags)  
-**Then** my review is stored against my user ID and `resort_slug`
-
-**And** the review appears in the resort's **Experience** section with my display name (or anonymous option — TBD)
-
-**Given** any visitor on a resort detail page  
+**Given** a resort has ≥ N published reviews  
 **When** the Experience section renders  
-**Then** it shows **aggregate signals** (avg rating, review count, optional AI-generated theme summary when N≥threshold)
+**Then** an optional **theme summary** block appears (expandable) alongside aggregate rating/count from Phase 2
 
-**And** full individual reviews are visible only when **logged in** (PO requirement: "also show how exactly review it" for authenticated users)
-
-**And** moderation + reporting flow exists before public launch of UGC (spam, PII, off-topic)
+**And** summaries are regenerated on a schedule or when review count crosses thresholds  
+**And** summaries respect FR-6 cost guardrails if same AI provider  
+**And** no PII from individual reviews leaks into summary text
 
 ---
 
@@ -41,10 +39,10 @@ Each resort detail page gains a **"How people experienced it"** section showing 
 
 | Dependency | Phase | Notes |
 |------------|-------|-------|
-| User accounts / auth | Phase 2 | Supabase or equivalent — PRD §9 out of scope Phase 1 |
-| Database for reviews | Phase 2+ | Not markdown — runtime UGC |
-| AI summarization of reviews | Phase 3 | Optional genre/themes; tie to FR-6 cost guardrails if same provider |
-| Moderation tooling | Phase 3 | Human review queue or automated filters |
+| User accounts / auth | Phase 2 Epic 9 | Supabase — done in Phase 2 |
+| Reviews + comments data model | Phase 2 Epic 12 | Runtime UGC in Supabase |
+| AI summarization | Phase 3 | Optional genre/themes; tie to FR-6 cost guardrails |
+| Moderation tooling | Phase 2 Epic 12 | Report + admin hide; human queue optional Phase 3 |
 
 ---
 
@@ -52,29 +50,27 @@ Each resort detail page gains a **"How people experienced it"** section showing 
 
 | Event | Trigger | Key properties |
 |-------|---------|----------------|
-| `review_section_viewed` | Experience section enters viewport | `resort_slug` |
-| `review_submitted` | User posts review | `resort_slug`, `rating`, `has_text` |
 | `review_summary_expanded` | User expands AI/theme summary | `resort_slug` |
+
+*(Phase 2 events `review_section_viewed`, `review_submitted`, etc. — see Epic 15 / tracking-plan §3.)*
 
 ---
 
-## Implementation order (when Phase 3 community starts)
+## Implementation order (when Phase 3 community AI starts)
 
-1. **Accounts** — prerequisite from Phase 2
-2. **Review data model + API** — create/read per resort, rate limits
-3. **Detail UI section** — below Getting There or above Practical Tips (placement TBD in UX pass)
-4. **Aggregate + theme summary** — batch job or on-demand AI when review count threshold met
-5. **Moderation** — admin flag, delete, tos linkage
+1. **Epic 12 live** — reviews + moderation in production
+2. **Threshold tuning** — minimum review count per resort
+3. **Summary job** — batch or on-demand AI when threshold met
+4. **Detail UI** — expandable theme block in Experience section
 
 ---
 
 ## Phase 1 / Epic 6 exclusions
 
-- No review UI stub on detail pages
-- No placeholder "Coming soon" unless PO explicitly requests teaser copy
-- Editorial **highlights/lowlights** remain the sole honesty signal until FR-8 ships
+- No review UI stub on detail pages (Phase 1)
+- Editorial **highlights/lowlights** remain the sole honesty signal until Epic 12 ships
 
 ---
 
-**Related:** [`phase-3-monetisation-ai.md`](phase-3-monetisation-ai.md) (AI infra may power summaries)  
-**PRD:** [`../prd/06-features-ai-chat.md`](../prd/06-features-ai-chat.md) (AI guardrails)
+**Related:** [`phase-3-monetisation-ai.md`](phase-3-monetisation-ai.md) (AI infra) · [`epic-12-community-reviews.md`](epic-12-community-reviews.md) (Phase 2 UGC)  
+**PRD:** [`../prds/prd-japan_winter_sport-2026-06-23/prd.md`](../prds/prd-japan_winter_sport-2026-06-23/prd.md) FR-10

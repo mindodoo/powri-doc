@@ -38,7 +38,8 @@
 # IMPLEMENTATION ORDER (from IR + architecture):
 # - Phase 1 sequential: Epic 1 → 2 → 3 (Stories 3.1–3.5) → 5
 # - Phase 1.1 improvements: Epic 6 (before launch QA checklist §3)
-# - Phase 3 (post-monetisation): Story 3.6 → Epic 4; user reviews → phase-3-user-community.md
+# - Phase 3 (post-monetisation): Story 3.6 → Epic 4; review AI summaries → phase-3-user-community.md
+# - Phase 2 (2026-06-23): Epics 9–15 — see epics/epics-phase2.md; order 9 → 10 → 11∥12 → 13 → 14 → 15
 # - Parallel track: content draft→published (all 20 resorts) before Story 5.5 gate
 # - Before Story 2.7: document quiz scoring in docs/quiz-scoring.md
 # - UX reference: DESIGN.md + EXPERIENCE.md (not PRD §12 alone)
@@ -47,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-06-17T12:00:00
+last_updated: 2026-06-23T12:00:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -130,3 +131,52 @@ development_status:
   8-2-scene-illustrations: done
   8-3-cosmic-buttons-sparkle-candle: done
   8-4-cosmic-integration-qa: done
+
+  # Phase 2 — see epics/epics-phase2.md (2026-06-23)
+  epic-9: backlog
+  9-1-supabase-project-database-migration: backlog
+  9-2-supabase-ssr-clients-session-middleware: backlog
+  9-3-sign-in-sheet-google-magic-link: backlog
+  9-4-profile-bootstrap-account-settings: backlog
+  9-5-gdpr-export-account-deletion: backlog
+  epic-9-retrospective: optional
+
+  epic-10: backlog
+  10-1-adaptive-navigation-mobile-desktop: backlog
+  10-2-hamburger-overflow-menu: backlog
+  10-3-save-resort-heart-guest-auth: backlog
+  10-4-saved-list-page-login-merge: backlog
+  epic-10-retrospective: optional
+
+  epic-11: backlog
+  11-1-resort-geo-fields-content-pipeline: backlog
+  11-2-google-places-proxy-cache: backlog
+  11-3-resort-map-section-ui: backlog
+  epic-11-retrospective: optional
+
+  epic-12: backlog
+  12-1-experience-section-review-list: backlog
+  12-2-submit-edit-review-photos: backlog
+  12-3-flat-comment-thread: backlog
+  12-4-report-content-admin-hide: backlog
+  epic-12-retrospective: optional
+
+  epic-13: backlog
+  13-1-manual-check-in-passport-photo: backlog
+  13-2-badge-evaluation-unlock-toast: backlog
+  13-3-passport-view: backlog
+  13-4-public-profile-page: backlog
+  epic-13-retrospective: optional
+
+  epic-14: backlog
+  14-1-trip-crud-template-generation: backlog
+  14-2-plan-tab-trip-list: backlog
+  14-3-trip-detail-timeline-edit: backlog
+  epic-14-retrospective: optional
+
+  epic-15: backlog
+  15-1-phase3-ai-entry-stubs: backlog
+  15-2-phase2-analytics-tracking-plan: backlog
+  15-3-privacy-terms-community-guidelines: backlog
+  15-4-phase2-release-gates-seo: backlog
+  epic-15-retrospective: optional
