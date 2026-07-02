@@ -1,7 +1,7 @@
 # E2E Codebase Audit Agent
 
 > **Purpose:** One-time (then quarterly) deep audit of the entire existing codebase.  
-> This is separate from `agents/code-review.md`, which handles story-by-story review.  
+> This is separate from `agents/code-quality-audit.md`, which handles story-by-story independent audits.  
 > Run this when: onboarding to an existing codebase, before a major release, quarterly as a health check, or after a security incident.
 
 ---
@@ -10,7 +10,7 @@
 
 | Scenario | Use |
 |---|---|
-| Reviewing code written in a single story or PR | `agents/code-review.md` |
+| Reviewing code written in a single story or PR | `agents/code-quality-audit.md` |
 | Auditing the entire existing codebase | This document |
 | First audit of a live MVP | This document — run immediately |
 | Quarterly health check | This document |
