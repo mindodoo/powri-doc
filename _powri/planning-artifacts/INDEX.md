@@ -12,7 +12,7 @@ Use this file to decide **what to read** before coding.
 | Layer | Phase 1 | Phase 2 |
 |-------|---------|---------|
 | **PRD monolith** | [`prds/phase1/prd-phase1.md`](prds/phase1/prd-phase1.md) | [`prds/phase2/prd-phase2.md`](prds/phase2/prd-phase2.md) |
-| **PRD shards** | [`prds/phase1/shards/`](prds/phase1/shards/) — read-only | *(none yet)* |
+| **PRD shards** | [`prds/phase1/shards/`](prds/phase1/shards/) — read-only | [`prds/phase2/shards/`](prds/phase2/shards/) — read-only |
 | **Epic monolith** | [`epics/phase1/epics-phase1.md`](epics/phase1/epics-phase1.md) | [`epics/phase2/epics-phase2.md`](epics/phase2/epics-phase2.md) |
 | **Epic shards** | [`epics/phase1/shards/`](epics/phase1/shards/) — read-only | [`epics/phase2/shards/`](epics/phase2/shards/) — read-only |
 
@@ -33,14 +33,14 @@ Use this file to decide **what to read** before coding.
 | Home / hero / resort cards (2.2–2.3) | [`epics/phase1/shards/epic-02-discover.md`](epics/phase1/shards/epic-02-discover.md) → [`prds/phase1/shards/03-features-discovery.md`](prds/phase1/shards/03-features-discovery.md) | ~200 |
 | Filters / search / Explore (2.4–2.6) | [`epics/phase1/shards/epic-02-discover.md`](epics/phase1/shards/epic-02-discover.md) → [`prds/phase1/shards/03-features-discovery.md`](prds/phase1/shards/03-features-discovery.md) | ~200 |
 | Resort detail (Epic 3) | [`epics/phase1/shards/epic-03-detail.md`](epics/phase1/shards/epic-03-detail.md) → [`prds/phase1/shards/05-features-detail-getting-there.md`](prds/phase1/shards/05-features-detail-getting-there.md) | ~250 |
-| **Phase 2 (auth, UGC, maps, trips)** | [`epics/phase2/epics-phase2.md`](epics/phase2/epics-phase2.md) → [`ux-designs/ux-phase2/experience.md`](ux-designs/ux-phase2/experience.md) → [`architecture/phase2/architecture-phase2.md`](architecture/phase2/architecture-phase2.md) | ~900 |
-| **Phase 2 auth (Epic 9)** | [`epics/phase2/shards/epic-09-supabase-auth.md`](epics/phase2/shards/epic-09-supabase-auth.md) → [`architecture/phase2/architecture-phase2.md`](architecture/phase2/architecture-phase2.md) §3–4 | ~150 |
-| **Phase 2 nav & saved (Epic 10)** | [`epics/phase2/shards/epic-10-nav-saved.md`](epics/phase2/shards/epic-10-nav-saved.md) | ~100 |
-| **Phase 2 map (Epic 11)** | [`epics/phase2/shards/epic-11-resort-map.md`](epics/phase2/shards/epic-11-resort-map.md) → `content-model.md` lat/lng | ~100 |
-| **Phase 2 reviews (Epic 12)** | [`epics/phase2/shards/epic-12-community-reviews.md`](epics/phase2/shards/epic-12-community-reviews.md) | ~120 |
-| **Phase 2 passport & profile (Epic 13)** | [`epics/phase2/shards/epic-13-passport-profile.md`](epics/phase2/shards/epic-13-passport-profile.md) | ~120 |
-| **Phase 2 trips (Epic 14)** | [`epics/phase2/shards/epic-14-trip-planning.md`](epics/phase2/shards/epic-14-trip-planning.md) | ~80 |
-| **Phase 2 launch (Epic 15)** | [`epics/phase2/shards/epic-15-phase2-launch.md`](epics/phase2/shards/epic-15-phase2-launch.md) → `docs/analytics/tracking-plan.md` | ~100 |
+| **Phase 2 (auth, UGC, maps, trips)** | [`prds/phase2/shards/03-phase2-functional-requirements.md`](prds/phase2/shards/03-phase2-functional-requirements.md) → [`epics/phase2/epics-phase2.md`](epics/phase2/epics-phase2.md) → [`ux-designs/ux-phase2/experience.md`](ux-designs/ux-phase2/experience.md) | ~150 |
+| **Phase 2 auth (Epic 9)** | [`epics/phase2/shards/epic-09-supabase-auth.md`](epics/phase2/shards/epic-09-supabase-auth.md) → [`prds/phase2/shards/04-features-auth.md`](prds/phase2/shards/04-features-auth.md) → [`architecture/phase2/architecture-phase2.md`](architecture/phase2/architecture-phase2.md) §3–4 | ~200 |
+| **Phase 2 nav & saved (Epic 10)** | [`epics/phase2/shards/epic-10-nav-saved.md`](epics/phase2/shards/epic-10-nav-saved.md) → [`prds/phase2/shards/11-features-saved-resorts.md`](prds/phase2/shards/11-features-saved-resorts.md) · [`12-features-navigation.md`](prds/phase2/shards/12-features-navigation.md) | ~180 |
+| **Phase 2 map (Epic 11)** | [`epics/phase2/shards/epic-11-resort-map.md`](epics/phase2/shards/epic-11-resort-map.md) → [`prds/phase2/shards/05-features-resort-map.md`](prds/phase2/shards/05-features-resort-map.md) → `content-model.md` lat/lng | ~140 |
+| **Phase 2 reviews (Epic 12)** | [`epics/phase2/shards/epic-12-community-reviews.md`](epics/phase2/shards/epic-12-community-reviews.md) → [`prds/phase2/shards/06-features-reviews-comments.md`](prds/phase2/shards/06-features-reviews-comments.md) | ~180 |
+| **Phase 2 passport & profile (Epic 13)** | [`epics/phase2/shards/epic-13-passport-profile.md`](epics/phase2/shards/epic-13-passport-profile.md) → [`prds/phase2/shards/07-features-ski-passport.md`](prds/phase2/shards/07-features-ski-passport.md) · [`13-features-public-profile.md`](prds/phase2/shards/13-features-public-profile.md) | ~200 |
+| **Phase 2 trips (Epic 14)** | [`epics/phase2/shards/epic-14-trip-planning.md`](epics/phase2/shards/epic-14-trip-planning.md) → [`prds/phase2/shards/08-features-trip-skeleton.md`](prds/phase2/shards/08-features-trip-skeleton.md) | ~140 |
+| **Phase 2 launch (Epic 15)** | [`epics/phase2/shards/epic-15-phase2-launch.md`](epics/phase2/shards/epic-15-phase2-launch.md) → [`prds/phase2/shards/09-features-ai-stubs.md`](prds/phase2/shards/09-features-ai-stubs.md) · [`10-features-seo.md`](prds/phase2/shards/10-features-seo.md) · [`16-metrics-analytics-decisions.md`](prds/phase2/shards/16-metrics-analytics-decisions.md) | ~200 |
 | Review AI theme summaries (Phase 3) | [`epics/phase1/shards/phase-3-user-community.md`](epics/phase1/shards/phase-3-user-community.md) | ~80 |
 | AI chat (Phase 3) | [`epics/phase1/shards/phase-3-monetisation-ai.md`](epics/phase1/shards/phase-3-monetisation-ai.md) → [`epics/phase1/shards/epic-04-ai-assistant.md`](epics/phase1/shards/epic-04-ai-assistant.md) → [`prds/phase1/shards/06-features-ai-chat.md`](prds/phase1/shards/06-features-ai-chat.md) | ~300 |
 | Info / legal / launch (Epic 5) | [`epics/phase1/shards/epic-05-launch.md`](epics/phase1/shards/epic-05-launch.md) → [`prds/phase1/shards/07-features-info.md`](prds/phase1/shards/07-features-info.md) | ~150 |
@@ -68,6 +68,8 @@ Use this file to decide **what to read** before coding.
 ### Phase 2 PRD
 
 | Monolith | [`prds/phase2/prd-phase2.md`](prds/phase2/prd-phase2.md) |
+| Shards index | [`prds/phase2/shards/README.md`](prds/phase2/shards/README.md) |
+| FR checklist | [`prds/phase2/shards/03-phase2-functional-requirements.md`](prds/phase2/shards/03-phase2-functional-requirements.md) |
 | Addendum | [`prds/phase2/addendum.md`](prds/phase2/addendum.md) |
 | Pre-implementation gate | [`prds/phase2/readiness-checklist.md`](prds/phase2/readiness-checklist.md) |
 

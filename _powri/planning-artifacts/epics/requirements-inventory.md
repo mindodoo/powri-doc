@@ -1,7 +1,7 @@
 # Requirements Inventory
 
 **Source:** Phase 1 [`epics/phase1/epics-phase1.md`](phase1/epics-phase1.md) · Phase 2 [`epics-phase2.md`](phase2/epics-phase2.md)  
-**PRD:** Phase 1 [`prds/phase1/shards/02-phase1-functional-requirements.md`](../prds/phase1/shards/02-phase1-functional-requirements.md) · Phase 2 [`prds/phase2/prd-phase2.md`](../prds/phase2/prd-phase2.md)
+**PRD:** Phase 1 [`prds/phase1/shards/02-phase1-functional-requirements.md`](../prds/phase1/shards/02-phase1-functional-requirements.md) · Phase 2 [`prds/phase2/shards/03-phase2-functional-requirements.md`](../prds/phase2/shards/03-phase2-functional-requirements.md)
 
 Phase 1 — all 20 resorts, **Home · Explore · Info**, **no AI assistance**, no Plan tab. **FR-6 → Phase 3:** [`phase-3-monetisation-ai.md`](phase1/shards/phase-3-monetisation-ai.md).
 

@@ -5,7 +5,7 @@
 | Monolith (edit here) | Regenerate |
 |----------------------|------------|
 | [`prds/phase1/prd-phase1.md`](prds/phase1/prd-phase1.md) | [`prds/phase1/shards/`](prds/phase1/shards/) (01–18) |
-| [`prds/phase2/prd-phase2.md`](prds/phase2/prd-phase2.md) | *(no shards yet — add when Phase 2 PRD grows large)* |
+| [`prds/phase2/prd-phase2.md`](prds/phase2/prd-phase2.md) | [`prds/phase2/shards/`](prds/phase2/shards/) (01–17) |
 | [`epics/phase1/epics-phase1.md`](epics/phase1/epics-phase1.md) | [`epics/phase1/shards/`](epics/phase1/shards/) (epic-01–08, phase-3 docs) |
 | [`epics/phase2/epics-phase2.md`](epics/phase2/epics-phase2.md) | [`epics/phase2/shards/`](epics/phase2/shards/) (epic-09–15) |
 
@@ -21,7 +21,7 @@
    ```markdown
    <!-- generated from prds/phase1/prd-phase1.md YYYY-MM-DD — do not edit -->
    ```
-4. **Update shard README** if files were added or renamed ([`prds/phase1/shards/README.md`](prds/phase1/shards/README.md), [`epics/README.md`](epics/README.md)).
+4. **Update shard README** if files were added or renamed ([`prds/phase1/shards/README.md`](prds/phase1/shards/README.md), [`prds/phase2/shards/README.md`](prds/phase2/shards/README.md), [`epics/README.md`](epics/README.md)).
 5. **Update [`INDEX.md`](INDEX.md)** task table if lookup paths changed.
 6. **Grep for broken links** — `rg 'planning-artifacts/prd\.md|epics\.md|ux-japan_winter_sport'` from repo root.
 
@@ -69,6 +69,30 @@ Then **rename/move** exploded files to match the curated `01`–`18` naming in [
 | `16-phase1-improvements.md` | **§3.8** Epic 6 |
 | `17-phase1-improvements-wave2.md` | **§3.9** Epic 7 |
 | `18-quiz-cosmic-story-ux.md` | **§3.10** Epic 8 |
+
+---
+
+## Phase 2 PRD shard map
+
+| Shard | Monolith section |
+|-------|------------------|
+| `01-overview-vision-users.md` | §0–2 |
+| `02-glossary-and-priority.md` | §3–4 |
+| `03-phase2-functional-requirements.md` | §5 FR list (FR-8–17) |
+| `04-features-auth.md` | §5.1 FR-8 |
+| `05-features-resort-map.md` | §5.2 FR-9 |
+| `06-features-reviews-comments.md` | §5.3 FR-10 |
+| `07-features-ski-passport.md` | §5.4 FR-11 |
+| `08-features-trip-skeleton.md` | §5.5 FR-12 |
+| `09-features-ai-stubs.md` | §5.6 FR-13 |
+| `10-features-seo.md` | §5.7 FR-14 |
+| `11-features-saved-resorts.md` | §5.8 FR-15 |
+| `12-features-navigation.md` | §5.9 FR-16 |
+| `13-features-public-profile.md` | §5.10 FR-17 |
+| `14-nfrs-and-architecture.md` | §6–7 |
+| `15-scope-and-non-goals.md` | §8–9 |
+| `16-metrics-analytics-decisions.md` | §10–12 |
+| `17-release-gates-and-readiness.md` | §13–14 |
 
 ---
 

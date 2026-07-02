@@ -156,11 +156,14 @@ Realizes UJ-2, UJ-4, UJ-5.
 
 #### FR-8.3: Profile basics
 
-**User** has display name, avatar (from Google or default), and optional short bio.
+**User** has display name, profile photo (from Google OAuth or uploaded photo), and optional short bio.
 
 **Consequences:**
 - Display name shown on reviews and comments (public identity — no anonymous mode).
 - User can edit display name; server rejects display names matching the profanity blocklist (addendum §O).
+- On `/account`, user uploads a photo to Supabase Storage bucket `avatars` (migration `003_avatars_bucket.sql`). Without a photo, UI shows display name initial.
+- Upload constraints: JPG, PNG, or WebP; max 2 MB; validated client-side before upload and server-side on `PATCH avatar_url`.
+- Profile photo auto-saves to `profiles.avatar_url`, updates the preview immediately, and reloads on later visits (cache-bust query on upload URLs).
 
 #### FR-8.4: Account deletion & data export (GDPR/PDPA)
 
@@ -534,10 +537,12 @@ Realizes UJ-3 (resolution — share passport URL).
 
 #### FR-17.2: Account settings
 
-**User** can access `/account` to edit display name, bio, avatar; export data; request deletion; sign out.
+**User** can access `/account` to edit display name, bio, profile photo (upload); export data; request deletion; sign out.
 
 **Consequences:**
 - Linked from hamburger / avatar menu.
+- Photo upload auto-saves; profile photo preview and reload reflect the stored `avatar_url`; initials shown when no photo.
+- Avatar validation errors (file type, size) display inline under the upload control; form field errors display above Save — use semantic `--color-error` / `.text-error` (Theme A token).
 - Deletion and export per FR-8.4.
 
 ---

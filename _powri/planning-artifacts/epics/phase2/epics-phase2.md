@@ -132,6 +132,8 @@ So that my public identity appears on reviews and comments.
 **When** my profile is created via DB trigger  
 **Then** I can set a unique `username` (URL slug) and edit display name, bio, avatar on `/account`
 
+**And** I can pick a preset avatar or upload a photo; it saves immediately and shows in the profile photo preview on `/account` (including on return visits)
+
 **And** display name rejects profanity blocklist server-side  
 **And** default username prompt if still `user-{id}` pattern  
 **And** Admin role is **not** self-service — manual DB only (FR-8.6)

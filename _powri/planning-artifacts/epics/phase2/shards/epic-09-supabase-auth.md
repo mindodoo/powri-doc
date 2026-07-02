@@ -15,10 +15,10 @@
 
 | Story | Summary |
 |-------|---------|
-| **9.1** | Supabase project + migration 001 + Storage buckets + env vars |
+| **9.1** | Supabase project + migrations 001–002 + env vars; **9.4 adds** migration 003 (`avatars` bucket) |
 | **9.2** | `@supabase/ssr` clients + middleware session refresh + `is_logged_in` analytics |
 | **9.3** | SignInSheet (Google + magic link) + callback + PostHog alias + auth events |
-| **9.4** | Profile username/display + `/account` settings + profanity filter |
+| **9.4** | Profile username/display + `/account` settings + profile photo upload (auto-save, inline validation, initials fallback) + profanity filter |
 | **9.5** | GDPR JSON export + account deletion request flow |
 
 ---
@@ -38,12 +38,16 @@
 
 | Area | Path |
 |------|------|
-| Migration | `supabase/migrations/001_phase2_core.sql` |
+| Migration (core) | `supabase/migrations/001_phase2_core.sql` |
+| Migration (storage) | `supabase/migrations/002_storage_buckets.sql`, `003_avatars_bucket.sql` |
 | Supabase clients | `web/src/lib/supabase/` |
 | Middleware | `web/src/middleware.ts` |
 | Auth UI | `web/src/components/auth/SignInSheet.tsx` |
 | Callback | `web/src/app/api/auth/callback/route.ts` |
 | Account | `web/src/app/[locale]/account/page.tsx` |
+| Avatar UI | `web/src/components/account/AvatarPicker.tsx` |
+| Avatar upload | `web/src/lib/auth/uploadAvatar.ts` |
+| Schema verify | `npm run verify:supabase` (includes `avatars` bucket) |
 
 ---
 
@@ -51,5 +55,7 @@
 
 - [ ] Sign in Google + magic link E2E on preview
 - [ ] Session persists refresh across navigation
+- [ ] `/account`: profile photo upload (≤2 MB JPG/PNG/WebP) auto-save; initials when no photo; oversize/type errors inline under upload
 - [ ] Export + deletion request flows work
 - [ ] RLS: user A cannot read user B draft trips (smoke test)
+- [ ] `npm run verify:supabase` passes (13 tables + 3 buckets incl. `avatars`)
