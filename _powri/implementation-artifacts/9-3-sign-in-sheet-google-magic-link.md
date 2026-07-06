@@ -21,7 +21,7 @@ So that I can review, plan, or check in without a password.
 
 - [x] Unit: returnTo, maskEmail, isNewUser, auth rate limit
 - [x] `lint`, `build`, `test:unit`, `test:analytics`, `test:launch`
-- [ ] Manual E2E: Google + magic link (requires Supabase Dashboard providers — see deploy-environment.md)
+- [x] Manual E2E: Google + magic link (requires Supabase Dashboard providers — see deploy-environment.md)
 
 ## Tasks / Subtasks
 

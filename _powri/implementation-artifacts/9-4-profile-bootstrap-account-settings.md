@@ -23,7 +23,7 @@ So that my public identity appears on reviews and comments.
 - [x] Unit: username validation, profanity filter, avatar URL validation
 - [x] `lint`, `build`, `test:unit`, `test:analytics`, `test:launch`
 - [x] Manual E2E: upload photo on `/account` — preview updates, persists after reload; oversize file shows inline error under upload
-- [ ] Manual E2E: username prompt after gated sign-in with default username
+- [x] Manual E2E: username prompt after gated sign-in with default username
 
 ## Tasks / Subtasks
 

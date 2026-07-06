@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-07-02T15:30:00
+last_updated: 2026-07-03T21:45:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -138,11 +138,15 @@ development_status:
   9-2-supabase-ssr-clients-session-middleware: done
   9-3-sign-in-sheet-google-magic-link: done
   9-4-profile-bootstrap-account-settings: done
-  9-5-gdpr-export-account-deletion: review
+  9-5-gdpr-export-account-deletion: done
+  9-6-bug-production-auth-redirect-localhost: done
+  9-7-supabase-prod-staging-separation: done
+  9-8-bug-magic-link-callback-session-failure: review
+  9-9-bug-magic-link-sending-auth-error-copy: done
   epic-9-retrospective: optional
 
-  epic-10: backlog
-  10-1-adaptive-navigation-mobile-desktop: backlog
+  epic-10: in-progress
+  10-1-adaptive-navigation-mobile-desktop: review
   10-2-hamburger-overflow-menu: backlog
   10-3-save-resort-heart-guest-auth: backlog
   10-4-saved-list-page-login-merge: backlog
