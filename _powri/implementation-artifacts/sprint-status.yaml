@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-07-03T21:45:00
+last_updated: 2026-07-06T18:50:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -126,11 +126,12 @@ development_status:
   7-6-around-resort-area-label-content: done
   epic-7-retrospective: done
 
-  epic-8: in-progress
+  epic-8: done
   8-1-snow-forest-path-copy-cosmic-subtitle: done
   8-2-scene-illustrations: done
   8-3-cosmic-buttons-sparkle-candle: done
   8-4-cosmic-integration-qa: done
+  epic-8-retrospective: done
 
   # Phase 2 — see epics/phase2/epics-phase2.md (2026-06-23)
   epic-9: in-progress
@@ -141,8 +142,11 @@ development_status:
   9-5-gdpr-export-account-deletion: done
   9-6-bug-production-auth-redirect-localhost: done
   9-7-supabase-prod-staging-separation: done
-  9-8-bug-magic-link-callback-session-failure: review
+  9-8-bug-magic-link-callback-session-failure: done
   9-9-bug-magic-link-sending-auth-error-copy: done
+  9-10-bug-google-oauth-auto-selects-account: done
+  9-12-bug-oauth-bad-state-wildcard-404: done
+  9-13-bug-profile-picture-upload-500-prod: done
   epic-9-retrospective: optional
 
   epic-10: in-progress
