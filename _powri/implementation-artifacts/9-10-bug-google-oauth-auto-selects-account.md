@@ -4,7 +4,7 @@ baseline_commit: c0484178998bfa90791b949288b34cb630d2e470
 
 # Bug 9.10: Google OAuth auto-selects account without showing picker
 
-Status: Done  
+Status: review  
 **Epic:** 9 · **Shard:** [`epic-09-supabase-auth.md`](../planning-artifacts/epics/phase2/shards/epic-09-supabase-auth.md)  
 **Reported:** 2026-07-03 · **Environment:** Production (`powri.vercel.app`)  
 **Severity:** P2 — UX issue; users with multiple Google accounts cannot control which account is used to sign in to Powri
@@ -64,11 +64,11 @@ await supabase.auth.signInWithOAuth({
 
 ## Acceptance criteria
 
-1. [x] Clicking "Sign in with Google" on `powri.vercel.app` always opens the Google account selection screen *(manual — verify after deploy)*
-2. [x] The account picker is shown even when Chrome has exactly one saved Google account *(manual — verify after deploy)*
-3. [x] The account picker is shown in incognito mode when a Google account was used earlier in the same session *(manual — verify after deploy)*
-4. [x] The user explicitly selects their account before Powri proceeds with sign-in *(manual — verify after deploy)*
-5. [x] After account selection, sign-in completes normally — no regression on the OAuth flow *(manual — verify after deploy)*
+1. [ ] Clicking "Sign in with Google" on `powri.vercel.app` always opens the Google account selection screen *(manual — verify after deploy)*
+2. [ ] The account picker is shown even when Chrome has exactly one saved Google account *(manual — verify after deploy)*
+3. [ ] The account picker is shown in incognito mode when a Google account was used earlier in the same session *(manual — verify after deploy)*
+4. [ ] The user explicitly selects their account before Powri proceeds with sign-in *(manual — verify after deploy)*
+5. [ ] After account selection, sign-in completes normally — no regression on the OAuth flow *(manual — verify after deploy)*
 
 ## Tasks / Subtasks
 

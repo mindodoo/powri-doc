@@ -82,16 +82,16 @@ After the fix, update `scripts/verify-supabase-schema.mjs` to also check that th
 - [x] **1. Server-side storage error logging** — `mapAvatarStorageError` logs `[avatar-upload]` with message + statusCode (no PII); avatar route uses mapped HTTP codes
 - [x] **2. Extend `verify:supabase`** — avatars bucket config (public, 2 MB, mime types) + service-role upload/public-read probe
 - [x] **3. Verify `powri-prod` bucket + policies** — PO/ops: run `verify:supabase` with prod keys; apply `003_avatars_bucket.sql` if checks fail (see Completion Notes)
-- [x] **4. Production re-test** — deploy branch → manual AC 2–4 on `powri.vercel.app`
+- [ ] **4. Production re-test** — deploy branch → manual AC 2–4 on `powri.vercel.app`
 
 ---
 
 ## Acceptance criteria
 
-1. [x] `npm run verify:supabase` passes with `powri-prod` keys, including bucket existence check *(staging passes; prod pending PO run)*
-2. [x] Profile picture upload on `powri.vercel.app` succeeds for a signed-in user (JPG/PNG/WebP < 2 MB) *(pending deploy + prod ops)*
-3. [x] Uploaded photo auto-saves and is visible immediately without a page reload *(pending prod test)*
-4. [x] Uploaded photo persists after page reload *(pending prod test)*
+1. [ ] `npm run verify:supabase` passes with `powri-prod` keys, including bucket existence check *(staging passes; prod pending PO run)*
+2. [ ] Profile picture upload on `powri.vercel.app` succeeds for a signed-in user (JPG/PNG/WebP < 2 MB) *(pending deploy + prod ops)*
+3. [ ] Uploaded photo auto-saves and is visible immediately without a page reload *(pending prod test)*
+4. [ ] Uploaded photo persists after page reload *(pending prod test)*
 5. [x] Oversize file (> 2 MB) shows the inline validation error under the upload button — not a 500 *(existing client + server validation)*
 6. [x] Wrong file type shows the inline validation error under the upload button — not a 500 *(existing client + server validation)*
 7. [x] `verify:supabase` script extended to catch bucket policy misconfiguration in future prod provisioning
