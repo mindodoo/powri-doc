@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-07-06T18:50:00
+last_updated: 2026-07-08T14:55:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -145,6 +145,7 @@ development_status:
   9-8-bug-magic-link-callback-session-failure: done
   9-9-bug-magic-link-sending-auth-error-copy: done
   9-10-bug-google-oauth-auto-selects-account: done
+  9-11-bug-post-signin-redirect-no-confirmation: done
   9-12-bug-oauth-bad-state-wildcard-404: done
   9-13-bug-profile-picture-upload-500-prod: done
   epic-9-retrospective: optional

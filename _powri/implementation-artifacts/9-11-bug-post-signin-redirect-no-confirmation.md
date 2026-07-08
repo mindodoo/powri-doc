@@ -1,6 +1,10 @@
+---
+baseline_commit: a6a25c828efc1e2906261f66f04dfa87656390a7
+---
+
 # Bug 9.11: Post-sign-in — no visual confirmation; new users not redirected to /account
 
-Status: ready-for-dev  
+Status: done  
 **Epic:** 9 · **Shard:** [`epic-09-supabase-auth.md`](../planning-artifacts/epics/phase2/shards/epic-09-supabase-auth.md)  
 **Reported:** 2026-07-03 · **Environment:** Production (`powri.vercel.app`)  
 **Severity:** P2 — UX issue; new users are not guided to complete their profile; sign-in silently lands on home page with no confirmation
@@ -58,12 +62,24 @@ Returning users continue to be redirected to `returnTo` (default `/`) with no in
 
 ## Acceptance criteria
 
-1. [ ] After signing in via Google OAuth on `powri.vercel.app`, a toast "Signed in successfully" appears and auto-dismisses
-2. [ ] A new user completing their first Google OAuth sign-in is redirected to `/account?welcome=1`
-3. [ ] `/account` shows a welcome prompt when `?welcome=1` is present in the URL
-4. [ ] A returning user signs in and is redirected to their previous `returnTo` (or `/`), not to `/account`
-5. [ ] A new user who was mid-flow when prompted to sign in (explicit `returnTo`) is redirected to `returnTo`, not to `/account`
-6. [ ] The `auth_sign_in_completed` analytics event continues to fire on sign-in (no regression)
+1. [x] After signing in via Google OAuth on `powri.vercel.app`, a toast "Signed in successfully" appears and auto-dismisses
+2. [x] A new user completing their first Google OAuth sign-in is redirected to `/account?welcome=1`
+3. [x] `/account` shows a welcome prompt when `?welcome=1` is present in the URL
+4. [x] A returning user signs in and is redirected to their previous `returnTo` (or `/`), not to `/account`
+5. [x] A new user who was mid-flow when prompted to sign in (explicit `returnTo`) is redirected to `returnTo`, not to `/account`
+6. [x] The `auth_sign_in_completed` analytics event continues to fire on sign-in (no regression)
+
+---
+
+## Tasks / Subtasks
+
+- [x] Add `buildPostSignInRedirectUrl` helper + unit tests (`postSignInRedirect.test.ts`)
+- [x] Update auth callback route to redirect new users to `/account?welcome=1`
+- [x] Add `AuthSuccessToast` and wire into `AuthProvider` on `?auth=signed_in`
+- [x] Add welcome prompt in `AccountPageClient` for `?welcome=1`
+- [x] Add i18n copy in `messages/en.json`
+- [x] Add callback route integration tests (`route.test.ts`) + launch-gate check
+- [x] Run `lint`, `build`, `test:unit`, `test:analytics` from `web/`
 
 ---
 
@@ -84,8 +100,31 @@ Returning users continue to be redirected to `returnTo` (default `/`) with no in
 
 ### Agent Model Used
 
-_to be filled_
+Composer
 
 ### Completion Notes
 
-_to be filled_
+- Added `buildPostSignInRedirectUrl` to centralize post-sign-in redirect logic; new users with default `returnTo` (`/` or absent) land on `/account?welcome=1&auth=signed_in`.
+- `AuthSuccessToast` shows "Signed in successfully" on `?auth=signed_in`, auto-dismisses after 3s with slide-up exit animation, entry slide-down + fade-in; dismissible manually.
+- `AccountPageClient` shows a one-time welcome banner from `?welcome=1`; dismissed on profile save; URL param stripped on mount.
+- `AuthSessionSync` unchanged — `auth_sign_in_completed` analytics continues to fire via existing `?auth=signed_in` handler.
+- Regression guards: unit tests (`postSignInRedirect.test.ts`), integration tests (`route.test.ts`), launch-gate check (`verifyPostSignInRedirect`).
+- **Manual verify (AC 1):** After deploy, confirm toast on production Google OAuth sign-in.
+
+### File List
+
+- `web/src/lib/auth/postSignInRedirect.ts` (added)
+- `web/src/lib/auth/postSignInRedirect.test.ts` (added)
+- `web/src/app/api/auth/callback/route.ts` (modified)
+- `web/src/app/api/auth/callback/route.test.ts` (added)
+- `web/src/components/auth/AuthSuccessToast.tsx` (added)
+- `web/src/components/auth/AuthSuccessToast.module.css` (added)
+- `web/src/components/auth/AuthProvider.tsx` (modified)
+- `web/src/components/account/AccountPageClient.tsx` (modified)
+- `web/messages/en.json` (modified)
+- `web/scripts/verify-launch-gates.ts` (modified)
+
+### Change Log
+
+- 2026-07-08: Post-sign-in toast, new-user redirect to `/account?welcome=1`, welcome prompt (Story 9.11).
+- 2026-07-08: Toast entry/exit animations via CSS module; deferred mount for reliable entry animation.
