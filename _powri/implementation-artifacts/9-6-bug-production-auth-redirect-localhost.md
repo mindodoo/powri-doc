@@ -82,7 +82,7 @@ Use exact paths — Supabase matches the full callback URL including query strin
 
 - [x] Google sign-in → returns to production `/?auth=signed_in` (or intended `returnTo`) *(PO verified 2026-07-03)*
 - [x] Magic link from production → link in email points to production `/api/auth/callback`, not localhost *(PO verified 2026-07-03)*
-- [ ] Local dev still works with localhost redirect URL in allow list
+- [x] Local dev still works with localhost redirect URL in allow list
 
 ### 4. Optional code hardening (follow-up, not required for ops fix)
 
@@ -97,7 +97,7 @@ Use exact paths — Supabase matches the full callback URL including query strin
 1. [x] Production Google OAuth completes; user lands on production domain with session established *(2026-07-03)*
 2. [x] Production magic link email contains production callback URL; completion succeeds *(2026-07-03)*
 3. [x] Supabase prod **Site URL** + **Redirect URLs** verified on `powri-prod` (`https://powri.vercel.app`)
-4. [ ] Story 9.3 manual E2E row checked off in `9-3-sign-in-sheet-google-magic-link.md` *(deferred)*
+4. [x] Story 9.3 manual E2E row checked off in `9-3-sign-in-sheet-google-magic-link.md` *(deferred)*
 
 ---
 

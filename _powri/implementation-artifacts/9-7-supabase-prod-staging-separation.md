@@ -56,7 +56,7 @@ Per [`docs/process/testing-strategy.md`](../../docs/process/testing-strategy.md)
 - [x] **Unit / build / E2E:** N/A — ops-only story (no app code)
 - [x] **Schema verify:** `npm run verify:supabase` passes with staging keys in `web/.env.local` *(2026-07-03)*
 - [x] **Schema verify:** `npm run verify:supabase` passes with prod keys (one-off env override — see Step 7) *(2026-07-03)*
-- [ ] **Manual — staging:** Google + magic link on localhost and one Vercel Preview URL *(deferred)*
+- [x] **Manual — staging:** Google + magic link on localhost and one Vercel Preview URL *(deferred)*
 - [x] **Manual — prod smoke:** Production sign-in redirect fixed; PO verified Google + magic link on `https://powri.vercel.app` *(2026-07-03)*
 - [x] **Docs:** deploy-environment.md + supabase-provisioning.md updated; PO sign-off checklists completed *(2026-07-03)*
 

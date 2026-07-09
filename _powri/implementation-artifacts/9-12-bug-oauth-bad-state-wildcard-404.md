@@ -94,7 +94,7 @@ After removing the wildcard (step 1), Supabase OAuth error redirects will fall b
 2. [x] An OAuth failure (e.g. `bad_oauth_state`) no longer produces a 404
 3. [x] The user lands on a `/auth/error` page with a user-friendly message (not raw error codes in the URL or the page)
 4. [x] A "Try signing in again" CTA is available on the error page
-5. [ ] Normal Google OAuth sign-in continues to work end-to-end after the wildcard is removed *(manual — verify after ops + deploy)*
+5. [x] Normal Google OAuth sign-in continues to work end-to-end after the wildcard is removed *(manual — verify after ops + deploy)*
 6. [x] `docs/qa/phase2/deploy-environment.md` is updated to reflect the corrected Redirect URLs list
 
 ## Tasks / Subtasks

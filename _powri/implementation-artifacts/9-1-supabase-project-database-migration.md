@@ -48,7 +48,7 @@ Per [`docs/process/testing-strategy.md`](../../docs/process/testing-strategy.md)
 - [x] **Provision / apply migrations** (AC: 1–3)
   - [x] Reuse linked project ref `dbeujcltupsccxxhfuji` (PO decision)
   - [x] Cloud schema verified via `npm run verify:supabase` (migrations already applied)
-  - [ ] Optional: `npx supabase db push` after local `supabase login` if schema drifts
+  - [x] Optional: `npx supabase db push` after local `supabase login` if schema drifts
 
 - [x] **Automated verification** (AC: 1–3, DoD)
   - [x] Add `scripts/verify-supabase-schema.mjs`

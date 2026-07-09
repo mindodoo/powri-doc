@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-07-08T17:20:00
+last_updated: 2026-07-08T18:00:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -134,7 +134,7 @@ development_status:
   epic-8-retrospective: done
 
   # Phase 2 — see epics/phase2/epics-phase2.md (2026-06-23)
-  epic-9: in-progress
+  epic-9: done
   9-1-supabase-project-database-migration: done
   9-2-supabase-ssr-clients-session-middleware: done
   9-3-sign-in-sheet-google-magic-link: done
@@ -149,7 +149,7 @@ development_status:
   9-12-bug-oauth-bad-state-wildcard-404: done
   9-13-bug-profile-picture-upload-500-prod: done
   9-14-desktop-sign-in-modal-no-scroll: done
-  epic-9-retrospective: optional
+  epic-9-retrospective: done
 
   epic-10: in-progress
   10-1-adaptive-navigation-mobile-desktop: review

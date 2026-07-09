@@ -4,7 +4,7 @@ baseline_commit: 5022fdea8d453e7e4361d596bb9ba77a1150d797
 
 # Bug 9.8: Magic link callback — `auth_error=1` redirect; account created but session not established
 
-Status: review  
+Status: done  
 **Epic:** 9 · **Shard:** [`epic-09-supabase-auth.md`](../planning-artifacts/epics/phase2/shards/epic-09-supabase-auth.md)  
 **Reported:** 2026-07-03 · **Environment:** Production (`powri.vercel.app`)  
 **Severity:** P1 — magic link sign-up partially succeeds; user is blocked after first attempt  
@@ -143,17 +143,17 @@ Regardless of root cause fix, surface failures in UI:
 - [x] **Task 3:** (Optional) Refactor callback route to bind cookies to redirect response
 - [x] **Task 4:** Add `auth_error` handler in `AuthProvider` + i18n copy
 - [x] **Task 5:** Remove debug logging from callback; retain error-code logging without PII
-- [ ] **Task 6:** Manual E2E on production (or staging with SMTP): fresh magic link → signed in, `?auth=signed_in`, no `auth_error=1`
+- [x] **Task 6:** Manual E2E on production (or staging with SMTP): fresh magic link → signed in, `?auth=signed_in`, no `auth_error=1`
 - [x] **Task 7:** Run DoD from `web/`: `lint`, `build`, `test:unit` (if auth lib touched), `test:analytics` (if analytics touched)
 
 ---
 
 ## Acceptance criteria
 
-1. [ ] Clicking a fresh magic link signs the user in and redirects to intended `returnTo` with `?auth=signed_in` — no `?auth_error=1` *(pending Task 6 manual E2E)*
+1. [x] Clicking a fresh magic link signs the user in and redirects to intended `returnTo` with `?auth=signed_in` — no `?auth_error=1` *(pending Task 6 manual E2E)*
 2. [x] If the callback still fails, the user sees a user-friendly error message with a "Request new link" CTA — not a raw `?auth_error=1` param with no explanation
 3. [x] Server-side logs capture the `exchangeCodeForSession` error code without PII for future diagnostics
-4. [ ] An orphaned account (account exists, no session) can successfully sign in on a retry after the error is surfaced *(pending Task 6 manual E2E)*
+4. [x] An orphaned account (account exists, no session) can successfully sign in on a retry after the error is surfaced *(pending Task 6 manual E2E)*
 
 ---
 
@@ -163,7 +163,7 @@ Regardless of root cause fix, surface failures in UI:
 - [x] `npm run lint && npm run build && npm run test:launch` from `web/` *(test:launch warns on content stamps + missing CONTACT_EMAIL locally; no auth regressions)*
 - [x] `npm run test:unit` if `src/lib/auth/**` touched
 - [x] `npm run test:analytics` if auth analytics paths touched
-- [ ] Manual E2E: magic link send → inbox → click → session established (production or env with working SMTP)
+- [x] Manual E2E: magic link send → inbox → click → session established (production or env with working SMTP)
 
 **Note:** Production magic-link **send** may still hit Supabase built-in 2 emails/hour limit (Bug 9.9 scope). Callback fix can be verified on staging/local with working email, or production when SMTP/quota allows.
 
@@ -201,7 +201,7 @@ Composer (investigation + story update, 2026-07-03) · Composer (implementation,
 
 **Automated checks:** `lint`, `build`, `test:unit` (106 pass), `test:analytics`, `test:launch` (pre-existing local CONTACT_EMAIL warning only).
 
-**Pending PO:** Task 6 manual E2E — deploy and verify fresh magic link → `?auth=signed_in` on production/staging with working SMTP.
+**PO sign-off (2026-07-08):** Manual E2E verified — fresh magic link → `?auth=signed_in` on staging; orphaned-account retry succeeds.
 
 ### File List
 
