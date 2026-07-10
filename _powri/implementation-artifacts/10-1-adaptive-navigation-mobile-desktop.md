@@ -4,7 +4,7 @@ baseline_commit: d1daace38388edbc187d00336799c40a04101894
 
 # Story 10.1: Adaptive Navigation — Mobile Bottom + Desktop Top
 
-Status: review
+Status: done
 
 <!-- Validation optional: bmad-create-story before bmad-dev-story -->
 

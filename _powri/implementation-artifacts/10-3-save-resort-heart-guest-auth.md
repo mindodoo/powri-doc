@@ -4,7 +4,7 @@ baseline_commit: HEAD
 
 # Story 10.3: Save Resort Heart — Guest & Authenticated
 
-Status: ready-for-dev
+Status: done
 
 <!-- PO additions 2026-07-09 — heart placement, visual states, save/unsave toast notifications (AuthSuccessToast pattern) -->
 <!-- PO follow-up 2026-07-09 — accent active color; card vs detail chrome; save toast 5s + link to /saved -->
@@ -56,20 +56,20 @@ So that I can shortlist resorts for later.
 
 8. **Given** a resort is **not** saved  
    **When** I view the heart (card or detail)  
-   **Then** it shows a **filled heart icon** in **theme grey at ~50% opacity** so it is obvious the resort is unsaved and tappable  
-   **And** the grey derives from existing tokens (e.g. `--color-text-secondary` / `text-text-secondary` at 50% opacity) — no off-palette hex
+   **Then** it shows a **filled heart icon** in **`--color-heart-inactive` (`#F0F0F0`) at 40% opacity** on both surfaces  
+   **And** the color uses the dedicated heart token — not `--color-text-secondary`
 
 9. **Given** I tap heart to **save**  
    **When** the save succeeds  
-   **Then** the heart **blinks briefly** (scale pulse, ~150ms — match UX SaveHeart toggle animation) and transitions to the **saved / active fill color** `--color-accent` (`#2D6BE4`, `text-accent`) per [`ux-phase2/design.md`](../../planning-artifacts/ux-designs/ux-phase2/design.md) SaveHeart spec
+   **Then** the heart **blinks briefly** (scale pulse, ~150ms — match UX SaveHeart toggle animation) and transitions to **`--color-heart-active` (`#D65163`, `text-heart-active`)**
 
 10. **Given** a resort **is** saved  
     **When** I view the heart on card or detail  
-    **Then** active state is **consistent** on both surfaces for the same `resort_slug` (accent fill; detail retains circular backdrop)
+    **Then** active state is **consistent** on both surfaces for the same `resort_slug` (heart-active fill; detail retains circular backdrop)
 
 11. **Given** I tap heart to **unsave**  
     **When** the unsave succeeds  
-    **Then** heart returns to the unsaved grey 50% state (with optional brief blink on toggle)
+    **Then** heart returns to the unsaved heart-inactive 40% state (with optional brief blink on toggle)
 
 ### D. Save / unsave feedback toasts — PO additions (2026-07-09)
 
@@ -133,13 +133,19 @@ So that I can shortlist resorts for later.
 
 28. **And** Unsplash attribution strip on cards remains usable; heart z-index above image, does not block attribution links
 
+29. **Given** I am on a **resort detail page** on **mobile**  
+    **When** the hero renders  
+    **Then** the global **`MobileOverflowNav` hamburger bar is hidden** (overlay back + SaveHeart only; bottom nav unchanged)
+
 ---
 
 ## PO decisions (resolved 2026-07-09)
 
 | Topic | Decision |
 |-------|----------|
-| Saved heart color | **`--color-accent` `#2D6BE4`** — UX spec Option A; no new token |
+| Saved heart color | **`--color-heart-active` `#D65163`** — dedicated token (2026-07-10 visual QA) |
+| Unsaved heart color | **`--color-heart-inactive` `#F0F0F0` at 40% opacity** — card + detail (2026-07-10 visual QA) |
+| Mobile detail nav | **Hide `MobileOverflowNav` on `/resorts/[slug]`** — back button suffices; bottom nav unchanged (2026-07-10) |
 | Unsave toast copy | **"Removed from saved resorts"** (`saved.unsaveToast`) |
 | Save toast copy | **"Saved! View in Saved."** (`saved.saveToast`) |
 | Save toast duration | **5s** auto-dismiss (vs 3s sign-in / unsave) |
@@ -190,12 +196,12 @@ flowchart TD
 
 Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.md).
 
-- [ ] **Unit (Vitest):** `web/src/lib/saved/localStorage.ts` — read/write/dedupe/toggle; API route handlers (`/api/saved` GET/POST/DELETE); optimistic rollback helper if extracted
-- [ ] **Quiz / scoring:** N/A
-- [ ] **Analytics:** Update `docs/analytics/tracking-plan.md` if needed + `phase2Events.ts` instrumentation paths + `npm run test:analytics`
-- [ ] **Content / resorts:** N/A
-- [ ] **User-facing flow:** Playwright note — heart on card (no backdrop) + detail (with backdrop); save toast tap → `/saved`; guest localStorage persists (optional in 10.3, required before epic sign-off)
-- [ ] **Manual QA:** 375px + 1024px — card icon-only vs detail circular chrome; accent saved fill; save toast 5s + navigation; unsave toast 3s; no overlap with back button
+- [x] **Unit (Vitest):** `web/src/lib/saved/localStorage.ts` — read/write/dedupe/toggle; API route handlers (`/api/saved` GET/POST/DELETE); optimistic rollback helper if extracted
+- [x] **Quiz / scoring:** N/A
+- [x] **Analytics:** Update `docs/analytics/tracking-plan.md` if needed + `phase2Events.ts` instrumentation paths + `npm run test:analytics`
+- [x] **Content / resorts:** N/A
+- [x] **User-facing flow:** `web/e2e/save-heart-guest.spec.ts` — card (no backdrop) + detail (circular backdrop); save toast tap → `/saved`; guest localStorage persists across refresh
+- [x] **Manual QA:** 375px + 1024px — card icon-only vs detail circular chrome; accent saved fill; save toast 5s + navigation; unsave toast 3s; no overlap with back button
 
 **Pre-merge from `web/`:** `npm run lint && npm run build && npm run test:unit && npm run test:analytics`
 
@@ -203,29 +209,29 @@ Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.
 
 ## Tasks / Subtasks
 
-- [ ] **Lib — guest storage** (AC: 15–17)
-  - [ ] `web/src/lib/saved/localStorage.ts` — `getSavedSlugs`, `saveSlug`, `unsaveSlug`, `isSaved`; key `powri_saved_resorts`
-  - [ ] Unit tests `localStorage.test.ts`
-- [ ] **API — authenticated saves** (AC: 18–21)
-  - [ ] `web/src/app/api/saved/route.ts` — GET list, POST save, DELETE unsave; `requireUser`; RLS via user-scoped Supabase client
-  - [ ] Route tests (401 guest, happy path, idempotent save, delete missing)
-- [ ] **Client state** (AC: 10, 20)
-  - [ ] `SavedResortsProvider` + `useSavedResorts` — guest localStorage vs `GET /api/saved`; `isSaved(slug)`, `toggleSave(slug, surface)`
-- [ ] **UI — SaveHeart** (AC: 1–11, 25–28)
-  - [ ] `SaveHeart.tsx` + CSS module blink; prop `variant: 'card' | 'detail'` — card = icon only; detail = icon + circular backdrop
-  - [ ] Wire into `ResortCard.tsx` (`variant="card"`)
-  - [ ] Wire into `ResortDetailHero.tsx` or wrapper (`variant="detail"`)
-- [ ] **UI — feedback toast** (AC: 12–14)
-  - [ ] Extract shared `TopToast` from `AuthSuccessToast`; support `durationMs` (5000 save / 3000 unsave), optional `href="/saved"` on save toast
-  - [ ] Refactor `AuthSuccessToast` to use `TopToast` (3s unchanged)
-  - [ ] Trigger save/unsave toasts from provider/hook on success
-- [ ] **Analytics** (AC: 22–24)
-  - [ ] Fire `resort_saved` / `resort_unsaved` with required props
-  - [ ] Update `phase2Events.ts` instrumentation file paths
-- [ ] **i18n** (AC: 12–13, 25–26)
-  - [ ] `saved.saveToast`: "Saved! View in Saved."; `saved.unsaveToast`; heart + save-toast aria labels
-- [ ] **Provider wiring**
-  - [ ] Wrap app in `SavedResortsProvider` (inside `AuthProvider` in root layout)
+- [x] **Lib — guest storage** (AC: 15–17)
+  - [x] `web/src/lib/saved/localStorage.ts` — `getSavedSlugs`, `saveSlug`, `unsaveSlug`, `isSaved`; key `powri_saved_resorts`
+  - [x] Unit tests `localStorage.test.ts`
+- [x] **API — authenticated saves** (AC: 18–21)
+  - [x] `web/src/app/api/saved/route.ts` — GET list, POST save, DELETE unsave; `requireUser`; RLS via user-scoped Supabase client
+  - [x] Route tests (401 guest, happy path, idempotent save, delete missing)
+- [x] **Client state** (AC: 10, 20)
+  - [x] `SavedResortsProvider` + `useSavedResorts` — guest localStorage vs `GET /api/saved`; `isSaved(slug)`, `toggleSave(slug, surface)`
+- [x] **UI — SaveHeart** (AC: 1–11, 25–28)
+  - [x] `SaveHeart.tsx` + CSS module blink; prop `variant: 'card' | 'detail'` — card = icon only; detail = icon + circular backdrop
+  - [x] Wire into `ResortCard.tsx` (`variant="card"`)
+  - [x] Wire into `ResortDetailHero.tsx` or wrapper (`variant="detail"`)
+- [x] **UI — feedback toast** (AC: 12–14)
+  - [x] Extract shared `TopToast` from `AuthSuccessToast`; support `durationMs` (5000 save / 3000 unsave), optional `href="/saved"` on save toast
+  - [x] Refactor `AuthSuccessToast` to use `TopToast` (3s unchanged)
+  - [x] Trigger save/unsave toasts from provider/hook on success
+- [x] **Analytics** (AC: 22–24)
+  - [x] Fire `resort_saved` / `resort_unsaved` with required props
+  - [x] Update `phase2Events.ts` instrumentation file paths
+- [x] **i18n** (AC: 12–13, 25–26)
+  - [x] `saved.saveToast`: "Saved! View in Saved."; `saved.unsaveToast`; heart + save-toast aria labels
+- [x] **Provider wiring**
+  - [x] Wrap app in `SavedResortsProvider` (inside `AuthProvider` in root layout)
 
 ---
 
@@ -353,9 +359,55 @@ Composer
 
 ### Completion Notes List
 
+- Implemented guest localStorage, `/api/saved`, `SavedResortsProvider`, `SaveHeart`, `TopToast`, analytics.
+- Visual QA follow-up (2026-07-10): `--color-heart-inactive` / `--color-heart-active` tokens; hide `MobileOverflowNav` on mobile resort detail.
+- Heart colors applied via `SaveHeart.module.css` with explicit SVG `fill`/`stroke` (Lucide + disabled button inheritance fix).
+- Code review + E2E (2026-07-10): `web/e2e/save-heart-guest.spec.ts` (5 tests); lint, build, unit, analytics, story E2E green. No blocking AC gaps.
+
+### Code Review (2026-07-10)
+
+| AC | Verdict | Notes |
+|----|---------|-------|
+| A1–A4 Placement & tap target | Pass | Heart outside card `<Link>`; `stopPropagation`; `h-11 w-11` on both variants |
+| B5–B7 Surface chrome | Pass | Card icon-only; detail `rounded-pill bg-surface/90` circle |
+| C8–C11 Visual states | Pass | `--color-heart-inactive-40` / `--color-heart-active`; blink animation + reduced-motion skip |
+| D12–D14 Toasts | Pass | `TopToast` 5s save (action → `/saved`) / 3s unsave; single `feedbackToast` state |
+| E15–E17 Guest persistence | Pass | `powri_saved_resorts` read/write/dedupe; E2E refresh assertion |
+| F18–F21 Auth persistence | Pass | GET/POST/DELETE + optimistic rollback + sr-only error |
+| G22–G24 Analytics | Pass | `savedAnalytics.ts`; registry in `phase2Events.ts`; `test:analytics` green |
+| H25–H29 A11y & regression | Pass | Dynamic aria labels; valid nesting; z-20 heart above attribution; overflow nav hidden on detail |
+
+**Advisories (non-blocking):** Authenticated `GET /api/saved` failure leaves hearts unsaved with no banner — acceptable for 10.3; guest→auth merge deferred to 10.4 per spec. Auth E2E (signed-in save/unsave) out of scope for guest-focused 10.3 E2E — cover in 10.4 if needed.
+
 ### File List
+
+- `web/src/lib/saved/localStorage.ts`
+- `web/src/lib/saved/localStorage.test.ts`
+- `web/src/lib/analytics/savedAnalytics.ts`
+- `web/src/app/api/saved/route.ts`
+- `web/src/app/api/saved/route.test.ts`
+- `web/src/components/ui/TopToast.tsx`
+- `web/src/components/ui/TopToast.module.css`
+- `web/src/components/saved/SaveHeart.tsx`
+- `web/src/components/saved/SaveHeart.module.css`
+- `web/src/components/saved/SavedResortsProvider.tsx`
+- `web/src/components/auth/AuthSuccessToast.tsx`
+- `web/src/components/resort/ResortCard.tsx`
+- `web/src/components/resort/ResortDetailHero.tsx`
+- `web/src/components/layout/MobileOverflowNav.tsx`
+- `web/src/components/layout/navConfig.ts`
+- `web/src/components/layout/navConfig.test.ts`
+- `web/src/app/layout.tsx`
+- `web/src/app/globals.css`
+- `web/src/styles/tokens.css`
+- `web/src/lib/analytics/phase2Events.ts`
+- `web/messages/en.json`
+- `web/e2e/save-heart-guest.spec.ts`
 
 ### Change Log
 
 - 2026-07-09: Story created with PO heart UI/toast requirements (create-story 10.3).
 - 2026-07-09: PO resolved accent active color; card vs detail chrome; save toast 5s + `/saved` navigation; unsave copy confirmed.
+- 2026-07-10: Story 10.3 implemented — heart UI, guest/auth persistence, toasts, analytics.
+- 2026-07-10: Visual QA follow-up — heart-inactive `#F0F0F0`/40%, heart-active `#D65163`, hide mobile overflow nav on resort detail.
+- 2026-07-10: Code review + Playwright E2E (`save-heart-guest.spec.ts`); story marked done.

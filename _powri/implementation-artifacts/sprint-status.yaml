@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-07-09T19:00:00
+last_updated: 2026-07-10T18:00:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -151,14 +151,14 @@ development_status:
   9-14-desktop-sign-in-modal-no-scroll: done
   epic-9-retrospective: done
 
-  epic-10: in-progress
-  10-1-adaptive-navigation-mobile-desktop: review
+  epic-10: done
+  10-1-adaptive-navigation-mobile-desktop: done
   10-2-hamburger-overflow-menu: done
   10-2-1-mobile-top-bar-title-overlap: done
   10-2-2-e2e-stale-server-false-failures-appmenusheet-1px-gap: done
-  10-3-save-resort-heart-guest-auth: ready-for-dev
-  10-4-saved-list-page-login-merge: backlog
-  epic-10-retrospective: optional
+  10-3-save-resort-heart-guest-auth: done
+  10-4-saved-list-page-login-merge: done
+  epic-10-retrospective: done
 
   epic-11: backlog
   11-1-resort-geo-fields-content-pipeline: backlog
