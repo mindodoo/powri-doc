@@ -3,7 +3,7 @@
 # project: japan_winter_sport
 # project_key: NOKEY
 # tracking_system: file-system
-# story_location: _powri/implementation-artifacts
+# story_location: _powri/implementation-artifacts (stories in Epic-<N>/, retros in Epic-Retro/, CI in CI/)
 
 # STATUS DEFINITIONS:
 # ==================
@@ -52,7 +52,7 @@ last_updated: 2026-07-10T18:00:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
-story_location: _powri/implementation-artifacts
+story_location: _powri/implementation-artifacts  # stories: Epic-<N>/ · retros: Epic-Retro/ · CI: CI/
 
 development_status:
   epic-1: done

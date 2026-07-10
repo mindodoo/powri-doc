@@ -55,7 +55,28 @@ Epic # matches the `epic_num` in sprint-status.yaml keys (e.g. `9-5-...` → Epi
 | — | Analytics events | [`../../docs/analytics/tracking-plan.md`](../../docs/analytics/tracking-plan.md) → [`prds/phase1/shards/15-analytics-legal-glossary.md`](prds/phase1/shards/15-analytics-legal-glossary.md) | |
 | — | Quiz scoring | [`features/quiz/scoring.md`](features/quiz/scoring.md) | ~100 |
 | — | Resort content | [`../../content/content-model.md`](../../content/content-model.md) → [`prds/phase1/shards/10-content-and-decisions.md`](prds/phase1/shards/10-content-and-decisions.md) | varies |
-| — | Sprint / stories | [`../implementation-artifacts/sprint-status.yaml`](../implementation-artifacts/sprint-status.yaml) + story file | varies |
+| — | Sprint / stories | [`../implementation-artifacts/sprint-status.yaml`](../implementation-artifacts/sprint-status.yaml) + story in [`Epic-<N>/`](../implementation-artifacts/) | varies |
+
+---
+
+## Implementation artifacts
+
+Stories, retrospectives, and CI logs live under [`../implementation-artifacts/`](../implementation-artifacts/). Each epic folder has a `README.md` shown on GitHub.
+
+| Epic | Folder | Brief |
+|------|--------|-------|
+| 1 | [`Epic-1/`](../implementation-artifacts/Epic-1/) | App foundation & content pipeline |
+| 2 | [`Epic-2/`](../implementation-artifacts/Epic-2/) | Discover your resort |
+| 3 | [`Epic-3/`](../implementation-artifacts/Epic-3/) | Resort detail & getting there |
+| 5 | [`Epic-5/`](../implementation-artifacts/Epic-5/) | Info, legal & launch readiness |
+| 6 | [`Epic-6/`](../implementation-artifacts/Epic-6/) | Phase 1 improvements (pre-launch polish) |
+| 7 | [`Epic-7/`](../implementation-artifacts/Epic-7/) | Phase 1 UX wave 2 (post-launch polish) |
+| 8 | [`Epic-8/`](../implementation-artifacts/Epic-8/) | Quiz cosmic mode UX v2 |
+| 9 | [`Epic-9/`](../implementation-artifacts/Epic-9/) | Supabase foundation & auth |
+| 10 | [`Epic-10/`](../implementation-artifacts/Epic-10/) | Navigation & saved resorts |
+| CI | [`CI/`](../implementation-artifacts/CI/) | Testing & quality gates |
+| Retros | [`Epic-Retro/`](../implementation-artifacts/Epic-Retro/) | Epic retrospectives |
+| — | [`deferred-work.md`](../implementation-artifacts/deferred-work.md) | Cross-story deferred items |
 
 ---
 

@@ -67,7 +67,7 @@ Composer
 - `.github/workflows/link-probe-weekly.yml` (new)
 - `docs/process/testing-strategy.md` (modified)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
-- `_powri/implementation-artifacts/ci-5-weekly-link-probe.md` (new)
+- `_powri/implementation-artifacts/CI/ci-5-weekly-link-probe.md` (new)
 
 ## Senior Developer Review (AI)
 

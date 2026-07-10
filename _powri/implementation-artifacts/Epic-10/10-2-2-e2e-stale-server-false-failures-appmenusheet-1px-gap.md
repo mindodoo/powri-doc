@@ -211,7 +211,7 @@ Per [`docs/process/testing-strategy.md`](../../docs/process/testing-strategy.md)
 | `web/e2e/smoke.spec.ts` | `AppMenuSheet` position assertions (Story 10.2.1) — verify only, do not loosen |
 | `web/src/components/layout/DesktopTopNav.tsx` | Verify border-b presence before changing `--desktop-nav-h` |
 | `web/src/components/layout/MobileOverflowNav.tsx`, `web/src/components/explore/ExploreTopBar.tsx`, `web/src/components/info/InfoTopBar.tsx` | Source of the confirmed 1px `border-b` on the mobile fixed bars |
-| `_powri/implementation-artifacts/10-2-1-mobile-top-bar-title-overlap.md` | Add corrective Change Log entry (AC 5) |
+| `_powri/implementation-artifacts/Epic-10/10-2-1-mobile-top-bar-title-overlap.md` | Add corrective Change Log entry (AC 5) |
 
 ---
 
@@ -231,7 +231,7 @@ Per [`docs/process/testing-strategy.md`](../../docs/process/testing-strategy.md)
 
 ### References
 
-- [Source: `_powri/implementation-artifacts/10-2-1-mobile-top-bar-title-overlap.md` — Dev Agent Record, Debug Log References, and Change Log entries claiming the pre-existing failures this story corrects]
+- [Source: `_powri/implementation-artifacts/Epic-10/10-2-1-mobile-top-bar-title-overlap.md` — Dev Agent Record, Debug Log References, and Change Log entries claiming the pre-existing failures this story corrects]
 - [Source: `web/playwright.config.ts` — `reuseExistingServer: !process.env.CI`]
 - [Source: `web/src/lib/layout/pageInsets.ts` lines 60–74 — `getAppMenuSheetTopClass`]
 - [Source: `web/src/styles/tokens.css` lines 93–97 — `--top-bar-h` / `--desktop-nav-h`]
@@ -269,7 +269,7 @@ Amelia (Claude Sonnet 5) — investigation only, this session; implementation pa
 - `web/playwright.config.ts` — E2E server isolation (port 3012 default, `reuseExistingServer: false`)
 - `docs/process/testing-strategy.md` — local E2E isolation + invalid baseline-check guardrail
 - `web/src/styles/tokens.css` — `--top-bar-h` includes 1px `border-b`
-- `_powri/implementation-artifacts/10-2-1-mobile-top-bar-title-overlap.md` — corrective Change Log entry (AC 5)
+- `_powri/implementation-artifacts/Epic-10/10-2-1-mobile-top-bar-title-overlap.md` — corrective Change Log entry (AC 5)
 - `_powri/implementation-artifacts/sprint-status.yaml` — status tracking
 
 ## Change Log

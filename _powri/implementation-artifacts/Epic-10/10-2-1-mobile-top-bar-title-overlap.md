@@ -141,7 +141,7 @@ Root cause was confirmed by running `npm run build` in `web/` and grepping `.nex
 
 ### References
 
-- [Source: `_powri/implementation-artifacts/10-2-hamburger-overflow-menu.md` — parent story, AC 16, "Follow-up UX polish" Dev Notes]
+- [Source: `_powri/implementation-artifacts/Epic-10/10-2-hamburger-overflow-menu.md` — parent story, AC 16, "Follow-up UX polish" Dev Notes]
 - [Source: `web/src/lib/layout/pageInsets.ts` lines 1–71 — full file, all offset constants]
 - [Source: `web/src/components/layout/DesktopTopNav.tsx:83` — `sticky` positioning, why desktop is unaffected]
 - [Source: `web/src/components/layout/DiscoveryTopBar.tsx`, `MobileOverflowNav.tsx` — fixed mobile bars depending on the broken offset]

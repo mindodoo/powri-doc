@@ -40,6 +40,6 @@ next-intl or equivalent; EN only ships; `locale` on events defaults to `en`.
 
 ---
 
-**Implementation artifacts:** [`_powri/implementation-artifacts/1-*.md`](../../../../implementation-artifacts/)  
-**Retro:** [`_powri/implementation-artifacts/epic-1-retro-2026-06-13.md`](../../../../implementation-artifacts/epic-1-retro-2026-06-13.md)  
+**Implementation artifacts:** [`_powri/implementation-artifacts/Epic-1/`](../../../../implementation-artifacts/Epic-1/)  
+**Retro:** [`_powri/implementation-artifacts/Epic-Retro/epic-1-retro-2026-06-13.md`](../../../../implementation-artifacts/Epic-Retro/epic-1-retro-2026-06-13.md)  
 **Architecture:** [`architecture/phase1/architecture-phase1.md`](../../../architecture/phase1/architecture-phase1.md)

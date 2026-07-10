@@ -152,7 +152,7 @@ Composer
 - `web/e2e/helpers/avatarFixtures.ts` (new)
 - `web/e2e/helpers/supabaseSession.ts` (new)
 - `scripts/verify-supabase-schema.mjs` (modified)
-- `_powri/implementation-artifacts/9-13-bug-profile-picture-upload-500-prod.md` (modified)
+- `_powri/implementation-artifacts/Epic-9/9-13-bug-profile-picture-upload-500-prod.md` (modified)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
 
 ### Change Log

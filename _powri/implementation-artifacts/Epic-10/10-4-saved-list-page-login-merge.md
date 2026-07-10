@@ -344,7 +344,7 @@ Banner sits **inside** page content, not competing with `TopToast` (z-index 70).
 - [Source: `_powri/planning-artifacts/ux-designs/ux-phase2/design.md` — SyncBanner]
 - [Source: `_powri/planning-artifacts/ux-designs/ux-phase2/mockups/key-saved.html`]
 - [Source: `_powri/planning-artifacts/ux-designs/ux-phase2/experience.md` — merge toast, guest saved flow]
-- [Source: `_powri/implementation-artifacts/10-3-save-resort-heart-guest-auth.md` — provider, toast, localStorage shape]
+- [Source: `_powri/implementation-artifacts/Epic-10/10-3-save-resort-heart-guest-auth.md` — provider, toast, localStorage shape]
 - [Source: `docs/analytics/tracking-plan.md` — `saved_list_viewed`]
 - [Source: `web/src/components/resort/ResortList.tsx` — expand / initial visible constants]
 

@@ -79,7 +79,7 @@ Composer
 - `web/src/lib/resort/gatewayExperiences.test.ts` (new)
 - `web/src/lib/resort/searchResorts.test.ts` (new)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
-- `_powri/implementation-artifacts/ci-3-coverage-threshold-45.md` (new)
+- `_powri/implementation-artifacts/CI/ci-3-coverage-threshold-45.md` (new)
 - `docs/process/testing-strategy.md` (modified — coverage review commands)
 
 ## Senior Developer Review (AI)

@@ -176,7 +176,7 @@ Epic 10 depends on Epic 9.2 (session) — **done**. Auth flows for Sign in / Ava
 - [Source: ux-designs/ux-phase2/experience.md — Navigation model]
 - [Source: architecture/phase2/architecture-phase2.md — §6.4 Adaptive navigation]
 - [Source: docs/analytics/tracking-plan.md — §3 `nav_destination_tapped`]
-- [Source: implementation-artifacts/1-4-app-shell-routing-bottom-navigation.md — Phase 1 BottomNav baseline]
+- [Source: implementation-artifacts/Epic-1/1-4-app-shell-routing-bottom-navigation.md — Phase 1 BottomNav baseline]
 
 ## Dev Agent Record
 
@@ -225,7 +225,7 @@ Composer
 - `web/e2e/smoke.spec.ts` (modified)
 - `web/playwright.config.ts` (modified — `PLAYWRIGHT_PORT` override for prod-server e2e when dev occupies 3000)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
-- `_powri/implementation-artifacts/10-2-hamburger-overflow-menu.md` (new — PO requirements draft for 10.2)
+- `_powri/implementation-artifacts/Epic-10/10-2-hamburger-overflow-menu.md` (new — PO requirements draft for 10.2)
 
 ## Change Log
 

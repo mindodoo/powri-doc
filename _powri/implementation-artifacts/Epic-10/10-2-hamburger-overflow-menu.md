@@ -239,7 +239,7 @@ If renaming `destination: 'info'` → `'about'`, update:
 - [Source: epics/phase2/epics-phase2.md — Story 10.2]
 - [Source: prds/phase2/shards/12-features-navigation.md — FR-16.3]
 - [Source: ux-phase2/experience.md — desktop single top nav]
-- [Source: implementation-artifacts/10-1-adaptive-navigation-mobile-desktop.md — interim two-row note]
+- [Source: implementation-artifacts/Epic-10/10-1-adaptive-navigation-mobile-desktop.md — interim two-row note]
 
 ## Dev Agent Record
 

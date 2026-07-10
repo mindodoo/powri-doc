@@ -343,7 +343,7 @@ Implement save toast body as a single `<button type="button">` or `<a href="/sav
 - [Source: `_powri/planning-artifacts/architecture/phase2/architecture-phase2.md` — §3.1 dual storage, §6.1–6.3 saved modules]
 - [Source: `_powri/planning-artifacts/ux-designs/ux-phase2/design.md` — SaveHeart component]
 - [Source: `_powri/planning-artifacts/ux-designs/ux-phase2/mockups/key-saved.html` — heart placement on card image]
-- [Source: `_powri/implementation-artifacts/9-11-bug-post-signin-redirect-no-confirmation.md` — toast behavior]
+- [Source: `_powri/implementation-artifacts/Epic-9/9-11-bug-post-signin-redirect-no-confirmation.md` — toast behavior]
 - [Source: `docs/analytics/tracking-plan.md` — `resort_saved`, `resort_unsaved`]
 - [Source: `web/src/styles/tokens.css` — theme colors]
 

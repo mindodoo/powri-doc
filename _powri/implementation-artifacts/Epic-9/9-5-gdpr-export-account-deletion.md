@@ -164,7 +164,7 @@ docs/analytics/tracking-plan.md                                 # §3.1 instrume
 - [Source: `_powri/planning-artifacts/prds/phase2/shards/04-features-auth.md` — FR-8.4]
 - [Source: `_powri/planning-artifacts/prds/phase2/addendum.md` — §H GDPR lifecycle]
 - [Source: `_powri/planning-artifacts/architecture/phase2/architecture-phase2.md` — §5 API table]
-- [Source: `_powri/implementation-artifacts/9-4-profile-bootstrap-account-settings.md` — account patterns]
+- [Source: `_powri/implementation-artifacts/Epic-9/9-4-profile-bootstrap-account-settings.md` — account patterns]
 
 ## Dev Agent Record
 

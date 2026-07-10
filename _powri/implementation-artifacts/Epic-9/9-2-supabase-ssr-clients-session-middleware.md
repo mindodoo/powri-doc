@@ -76,7 +76,7 @@ Composer
 - `web/src/app/layout.tsx`
 - `.github/workflows/ci.yml`
 - `docs/qa/phase2/deploy-environment.md`
-- `_powri/implementation-artifacts/9-2-supabase-ssr-clients-session-middleware.md`
+- `_powri/implementation-artifacts/Epic-9/9-2-supabase-ssr-clients-session-middleware.md`
 - `_powri/implementation-artifacts/sprint-status.yaml`
 
 ## Senior Developer Review (AI)

@@ -81,7 +81,7 @@ Original 8.2 AC capped four scenes at ≤500 KB. Intro art is additive; LCP chec
 ### File List
 
 - `docs/qa/phase1/manual-qa-epic-08.md` (updated)
-- `_powri/implementation-artifacts/8-4-cosmic-integration-qa.md` (new)
+- `_powri/implementation-artifacts/Epic-8/8-4-cosmic-integration-qa.md` (new)
 - `_powri/implementation-artifacts/sprint-status.yaml`
 
 ## Senior Developer Review (AI)

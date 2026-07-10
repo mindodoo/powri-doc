@@ -65,7 +65,7 @@ Composer
 - `.github/workflows/ci.yml` (new)
 - `web/package.json` (modified — `test:around-area`)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
-- `_powri/implementation-artifacts/ci-1-github-actions-quality-gates.md` (new)
+- `_powri/implementation-artifacts/CI/ci-1-github-actions-quality-gates.md` (new)
 
 ## Senior Developer Review (AI)
 

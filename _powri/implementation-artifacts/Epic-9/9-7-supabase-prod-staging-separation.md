@@ -304,8 +304,8 @@ Rate limiting vars remain on **both** Preview and Production — same Upstash in
 
 - [Source: `docs/qa/phase2/deploy-environment.md`](../../docs/qa/phase2/deploy-environment.md)
 - [Source: `docs/ops/supabase-provisioning.md`](../../docs/ops/supabase-provisioning.md)
-- [Source: `_powri/implementation-artifacts/9-6-bug-production-auth-redirect-localhost.md`](9-6-bug-production-auth-redirect-localhost.md)
-- [Source: `_powri/implementation-artifacts/9-1-supabase-project-database-migration.md`](9-1-supabase-project-database-migration.md)
+- [Source: `_powri/implementation-artifacts/Epic-9/9-6-bug-production-auth-redirect-localhost.md`](9-6-bug-production-auth-redirect-localhost.md)
+- [Source: `_powri/implementation-artifacts/Epic-9/9-1-supabase-project-database-migration.md`](9-1-supabase-project-database-migration.md)
 
 ---
 
@@ -339,10 +339,10 @@ Composer
 
 ### File List
 
-- `_powri/implementation-artifacts/9-7-supabase-prod-staging-separation.md` (new)
+- `_powri/implementation-artifacts/Epic-9/9-7-supabase-prod-staging-separation.md` (new)
 - `docs/qa/phase2/deploy-environment.md` (updated)
 - `docs/ops/supabase-provisioning.md` (updated)
 - `docs/qa/phase2/README.md` (updated)
 - `_powri/planning-artifacts/prds/phase2/readiness-checklist.md` (updated)
-- `_powri/implementation-artifacts/9-6-bug-production-auth-redirect-localhost.md` (cross-link)
+- `_powri/implementation-artifacts/Epic-9/9-6-bug-production-auth-redirect-localhost.md` (cross-link)
 - `_powri/implementation-artifacts/sprint-status.yaml` (updated)

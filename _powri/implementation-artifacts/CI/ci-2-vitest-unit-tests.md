@@ -78,7 +78,7 @@ Composer
 - `web/scripts/verify-around-area.ts` (deleted)
 - `.github/workflows/ci.yml` (modified)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
-- `_powri/implementation-artifacts/ci-2-vitest-unit-tests.md` (new)
+- `_powri/implementation-artifacts/CI/ci-2-vitest-unit-tests.md` (new)
 
 ## Senior Developer Review (AI)
 

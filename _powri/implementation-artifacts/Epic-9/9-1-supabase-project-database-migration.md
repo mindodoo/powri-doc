@@ -106,7 +106,7 @@ Composer
 - `docs/qa/phase2/deploy-environment.md` (new)
 - `docs/qa/phase2/README.md` (modified)
 - `docs/README.md` (modified)
-- `_powri/implementation-artifacts/9-1-supabase-project-database-migration.md` (new)
+- `_powri/implementation-artifacts/Epic-9/9-1-supabase-project-database-migration.md` (new)
 - `_powri/implementation-artifacts/sprint-status.yaml` (modified)
 
 ## Senior Developer Review (AI)

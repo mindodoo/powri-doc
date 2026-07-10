@@ -12,7 +12,7 @@ Onboarding, Home hero, resort cards, filters, search, Explore tab, Find My Resor
 
 ≤4 `OnboardingCard` slides; no photos; skip + "Get started"; persistent flag; final card → quiz entry.
 
-**Artifact:** [`_powri/implementation-artifacts/2-1-first-time-onboarding-flow.md`](../../../../implementation-artifacts/2-1-first-time-onboarding-flow.md)
+**Artifact:** [`_powri/implementation-artifacts/Epic-2/2-1-first-time-onboarding-flow.md`](../../../../implementation-artifacts/Epic-2/2-1-first-time-onboarding-flow.md)
 
 ---
 
@@ -28,7 +28,7 @@ Onboarding, Home hero, resort cards, filters, search, Explore tab, Find My Resor
 
 `ResortCard` for all 20; shared-element transition; `resort_card_tapped` with `list_context: home`.
 
-**Artifact:** [`_powri/implementation-artifacts/2-3-resort-list-resort-cards-all-20.md`](../../../../implementation-artifacts/2-3-resort-list-resort-cards-all-20.md)
+**Artifact:** [`_powri/implementation-artifacts/Epic-2/2-3-resort-list-resort-cards-all-20.md`](../../../../implementation-artifacts/Epic-2/2-3-resort-list-resort-cards-all-20.md)
 
 ---
 
@@ -36,7 +36,7 @@ Onboarding, Home hero, resort cards, filters, search, Explore tab, Find My Resor
 
 Client-side filter; single-select chips; `filter_applied` / `filter_zero_results`.
 
-**Artifact:** [`_powri/implementation-artifacts/2-4-filter-chips-instant-list-filtering.md`](../../../../implementation-artifacts/2-4-filter-chips-instant-list-filtering.md)
+**Artifact:** [`_powri/implementation-artifacts/Epic-2/2-4-filter-chips-instant-list-filtering.md`](../../../../implementation-artifacts/Epic-2/2-4-filter-chips-instant-list-filtering.md)
 
 ---
 
@@ -44,7 +44,7 @@ Client-side filter; single-select chips; `filter_applied` / `filter_zero_results
 
 Inline search from top bar; live results; `search_performed`.
 
-**Artifact:** [`_powri/implementation-artifacts/2-5-inline-search-by-resort-name.md`](../../../../implementation-artifacts/2-5-inline-search-by-resort-name.md)
+**Artifact:** [`_powri/implementation-artifacts/Epic-2/2-5-inline-search-by-resort-name.md`](../../../../implementation-artifacts/Epic-2/2-5-inline-search-by-resort-name.md)
 
 ---
 
@@ -52,7 +52,7 @@ Inline search from top bar; live results; `search_performed`.
 
 Filters + quiz CTA prominent; same dataset as Home; `list_context: explore` / `filtered`.
 
-**Artifact:** [`_powri/implementation-artifacts/2-6-explore-tab.md`](../../../../implementation-artifacts/2-6-explore-tab.md)
+**Artifact:** [`_powri/implementation-artifacts/Epic-2/2-6-explore-tab.md`](../../../../implementation-artifacts/Epic-2/2-6-explore-tab.md)
 
 ---
 
@@ -86,5 +86,5 @@ As an undecided planner, I want a short 4-question quiz that recommends resorts,
 
 ---
 
-**Implementation artifacts:** [`_powri/implementation-artifacts/2-*.md`](../../../../implementation-artifacts/)  
-**Retro:** [`_powri/implementation-artifacts/epic-2-retro-2026-06-13.md`](../../../../implementation-artifacts/epic-2-retro-2026-06-13.md)
+**Implementation artifacts:** [`_powri/implementation-artifacts/Epic-2/`](../../../../implementation-artifacts/Epic-2/)  
+**Retro:** [`_powri/implementation-artifacts/Epic-Retro/epic-2-retro-2026-06-13.md`](../../../../implementation-artifacts/Epic-Retro/epic-2-retro-2026-06-13.md)
