@@ -242,15 +242,15 @@ So that my shortlist follows me across devices.
 
 ## Epic 11: Resort Map & Surroundings
 
-Users see an interactive map of the resort and nearby places on each resort detail page.
+Users see an interactive map of the resort and nearby places — including PO-curated editorial picks — on each resort detail page.
 
 **FRs:** FR-9 · **Shard:** [`epic-11-resort-map.md`](shards/epic-11-resort-map.md)
 
-### Story 11.1: Resort Geo Fields in Content Pipeline
+### Story 11.1: Resort Geo Fields & Curated Places Content Pipeline
 
 As a **developer**,  
-I want latitude and longitude on every published resort,  
-So that the map centers correctly without runtime geocoding.
+I want latitude/longitude and an optional curated-places list on every published resort,  
+So that the map centers correctly and can surface editorial picks without runtime geocoding.
 
 **Acceptance Criteria:**
 
@@ -261,31 +261,41 @@ So that the map centers correctly without runtime geocoding.
 **And** all **20** published resort markdown files have valid coordinates  
 **And** build warns on missing coords; fails once PO confirms all populated
 
+**Given** `content-model.md` and `lib/content/schema.ts` add `curated_map_places`  
+**When** the build runs  
+**Then** each resort's `curated_map_places` (default `[]`) validates against the category enum (`ski_in_ski_out`, `accommodation`, `restaurant`, `supermarket`, `convenience`, `transport`, `onsen`, `attraction`) and `place_id` format (`ChIJ...`)  
+**And** invalid `place_id`/`highlight`/`tags` warn (not fail); an invalid `category` enum value fails the build  
+**And** `getResortBySlug()` exposes `curated_map_places` as a typed, always-present array
+
 ---
 
 ### Story 11.2: Google Places Proxy & Cache
 
 As the **system**,  
-I want Places API calls server-side with caching,  
-So that POI data stays secure and cost-bounded.
+I want Places API calls server-side with caching, merged with any curated editorial entries,  
+So that POI data stays secure, cost-bounded, and surfaces PO-curated picks.
 
 **Acceptance Criteria:**
 
 **Given** `GOOGLE_PLACES_API_KEY` is server-only  
 **When** `GET /api/places/nearby?resortSlug=&category=` is called  
 **Then** lat/lng come from build-time resort index (not client params)  
-**And** results cache in `places_cache` for 24h per resort+category  
-**And** response includes minimal fields + Google attribution string  
+**And** the response is `{ curated: CuratedMapPlace[], api: GooglePlace[] }` — curated sourced from the build-time resort index (no DB call), API results cached in `places_cache` for a **configurable TTL** (env var `PLACES_CACHE_TTL_HOURS`, default **168h/7d**, minimum **24h** — operators can drop to 24h for higher POI-churn periods, e.g. end-of-season closures, without a code change) per resort+category  
+**And** API results are deduplicated against curated `place_id`s (curated entry wins; API duplicate dropped)  
+**And** `ski_in_ski_out` never triggers an API call (editorial-only category)  
+**And** the Google Nearby Search request's field mask is restricted to **Pro-tier fields only** (`displayName`, `formattedAddress`/`shortFormattedAddress`, `location`, `photos`, `primaryType`) — `rating`, `userRatingCount`, and other Enterprise-tier fields are **never** requested, since Google bills the whole call at the highest SKU any requested field belongs to  
+**And** response includes those minimal Pro-tier fields + Google attribution string (no `rating`)  
 **And** rate limit `places`: 60/min/IP  
-**And** graceful empty response if API fails
+**And** graceful empty response if API fails (curated entries, if any, still returned)  
+**And** a GCP billing budget alert is configured on the Places API project as a cost guardrail
 
 ---
 
 ### Story 11.3: Resort Map Section UI
 
 As a **visitor on resort detail**,  
-I want an "Around the resort" map with category pins,  
-So that I discover nearby food, onsen, and attractions.
+I want an "Around the resort" map with category pins, curated picks shown first and visually distinguished,  
+So that I discover nearby food, onsen, attractions, and PO-recommended spots.
 
 **Acceptance Criteria:**
 
@@ -293,8 +303,10 @@ So that I discover nearby food, onsen, and attractions.
 **When** the section enters viewport  
 **Then** `map_section_viewed` fires  
 **And** Leaflet + OSM tiles render via dynamic import (ssr: false)  
-**And** category filters: restaurant, lodging, spa, tourist_attraction, convenience  
-**And** pin tap shows name, rating, vicinity; **Open in Google Maps** link  
+**And** category filters: restaurant, accommodation (incl. ski-in/ski-out), supermarket, convenience, transport, onsen, attraction  
+**And** curated places render first per category, then API results, deduplicated by `place_id`  
+**And** curated pins show a distinct "Powri pick" visual marker (exact treatment TBD by UX) plus any editorial `highlight`/`tags`  
+**And** pin tap shows name, vicinity/highlight (**no Google `rating`** — Pro-tier field mask only, see Story 11.2 cost control); **Open in Google Maps** link  
 **And** **Powered by Google** attribution visible  
 **And** `map_pin_tapped` fires with `place_category`  
 **And** CSP allows OSM tile domains

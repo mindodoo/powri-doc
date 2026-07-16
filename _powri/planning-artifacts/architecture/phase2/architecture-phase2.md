@@ -36,7 +36,7 @@ user_name: Mindodoo
 | FR | Architectural components |
 |----|-------------------------|
 | **FR-8** Auth | Supabase Auth (Google + magic link), `@supabase/ssr`, middleware session refresh, `profiles` table |
-| **FR-9** Map | Leaflet + OSM tiles (client), `/api/places/nearby`, `places_cache`, resort `latitude`/`longitude` in content |
+| **FR-9** Map | Leaflet + OSM tiles (client), `/api/places/nearby` (curated + Google Places merge/dedup), `places_cache`, resort `latitude`/`longitude`/`curated_map_places` in content |
 | **FR-10** Reviews/comments | `reviews`, `comments`, `review_photos`, Experience section client island, admin PATCH routes |
 | **FR-11** Passport/badges | `passport_check_ins`, `user_badges`, `lib/badges/evaluate.ts` |
 | **FR-12** Trips | `trips`, `trip_days`, `trip_activities`, quota trigger, `lib/trips/templates.ts` |
@@ -219,9 +219,11 @@ Trigger `handle_new_user` creates profile with temporary username `user-{idPrefi
 GET /api/places/nearby?resortSlug=niseko-united&category=restaurant
 
 1. Load lat/lng from build-time resort index (not client-supplied coords)
-2. Check places_cache (service role) — return if fetched_at < 24h ago
-3. Else call Google Places Nearby Search (server key)
-4. Upsert cache; return minimal fields: placeId, name, lat, lng, rating, vicinity
+2. Check places_cache (service role) — return if fetched_at < configured TTL ago
+   (env `PLACES_CACHE_TTL_HOURS`, default 168h/7d, minimum 24h)
+3. Else call Google Places Nearby Search (server key) with a Pro-tier-only field
+   mask — no `rating`/`userRatingCount` (Enterprise SKU trigger; see addendum §F)
+4. Upsert cache; return minimal fields: placeId, name, lat, lng, vicinity
 5. Response: { places: [...], attribution: "Powered by Google" }
 ```
 
@@ -435,7 +437,7 @@ japan_winter_sport/
 | 3 | SignInSheet + account routes + profile bootstrap | FR-8, FR-17 |
 | 4 | Adaptive nav (BottomNav + DesktopTopNav + menu) | FR-16 |
 | 5 | Saved resorts localStorage + API + `/saved` | FR-15 |
-| 6 | Content lat/lng + schema + Places proxy + map UI | FR-9 |
+| 6 | Content lat/lng + curated places schema + Places proxy (merge/dedup) + map UI | FR-9 |
 | 7 | Reviews + comments + Experience section | FR-10 |
 | 8 | Passport + badges + `/passport` + public profile | FR-11, FR-17 |
 | 9 | Trips CRUD + template + Plan UI | FR-12 |

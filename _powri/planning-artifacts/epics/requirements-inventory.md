@@ -28,7 +28,7 @@ Phase 2 — auth, saved resorts, map, reviews, passport, trip skeleton, public p
 | ID | Summary |
 |----|---------|
 | **FR-8** | Google OAuth + magic link auth; guest browse unchanged; profile basics; GDPR export/deletion; user/admin roles |
-| **FR-9** | Resort map section (Leaflet + OSM); Google Places POIs via server proxy; lazy-loaded; cost controls |
+| **FR-9** | Resort map section (Leaflet + OSM); PO-curated places rendered first + Google Places POIs via server proxy; lazy-loaded; cost controls |
 | **FR-10** | Structured reviews + flat comments; report flow; admin hide via API |
 | **FR-11** | Manual check-in; optional passport photo; badge awards; passport view |
 | **FR-12** | Trip CRUD (max 5); template skeleton itinerary; list/detail views; AI handoff hooks (Phase 3) |

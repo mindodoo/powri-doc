@@ -336,11 +336,15 @@ Phase 2 stores trip shell; Phase 3 AI request includes:
 | Control | Implementation |
 |---------|----------------|
 | Proxy | `/api/places/nearby?resort_slug=&category=` — server-side key |
-| Cache | Redis or Supabase table; TTL 24h per resort+category |
-| Fields | Minimal: name, place_id, lat/lng, rating, vicinity |
+| Cache | Supabase table (`places_cache`); **configurable TTL** via env var `PLACES_CACHE_TTL_HOURS`, default **168h/7d**, minimum **24h** (drop to 24h during high POI-churn periods, e.g. end of season, without a code change) |
+| Fields | **Pro-tier only:** name, place_id, lat/lng, formatted address, photos, type — **no `rating`/`userRatingCount`** (see cost note below) |
 | Fallback | Static map pin + "Open in Google Maps" search link |
 
-At 20 resorts and early traffic, expect **< $50/month** — within $200 Google credit.
+**Cost note (corrected 2026-07-16):** Google discontinued the pooled $200/mo credit on March 1, 2025. It's now replaced by fixed per-SKU monthly free-call caps (Pro tier: 5,000 free calls/mo; Enterprise tier: 1,000 free calls/mo) plus a **one-time, non-recurring** $300 Google Cloud trial credit for new billing accounts — there is no ongoing monthly pool to rely on.
+
+Google bills a Nearby Search call at the **highest SKU any requested field belongs to** — `rating` alone would push the whole call from the cheaper Pro SKU ($32/1,000, 5,000 free/mo) onto the pricier Enterprise SKU ($35/1,000, only 1,000 free/mo). The field mask above deliberately excludes `rating` to stay on Pro.
+
+At 20 resorts × 7 API-fillable categories (`ski_in_ski_out` is editorial-only) = 140 resort+category cache slots: worst case ≈ 600 calls/month at the default 7-day TTL, or ≈ 4,200 calls/month even at the minimum 24h TTL — both comfortably under the 5,000/mo Pro free cap. **Expected steady-state cost: $0/month.** A GCP billing budget alert is configured as a guardrail regardless.
 
 ---
 
@@ -451,11 +455,11 @@ map_default_zoom: 13       # optional; default 13 if omitted [T1]
 | Map tiles | **Leaflet** + **OpenStreetMap** (Phase 1 architecture default) |
 | Resort pin | Seed content lat/lng |
 | Nearby POIs | **Google Places API** via `/api/places/nearby` server proxy |
-| Cache | Supabase table or edge cache; TTL 24h per `resort_slug + category` |
+| Cache | Supabase table (`places_cache`); **configurable TTL** per `resort_slug + category` — env var `PLACES_CACHE_TTL_HOURS`, default 168h/7d, minimum 24h (see addendum §F) |
 
 **Google Places attribution (required on map UI):**
 - Display "Powered by Google" or equivalent per [Places API policies](https://developers.google.com/maps/documentation/places/web-service/policies).
-- Place details shown: name, rating, vicinity only — no caching beyond TTL.
+- Place details shown: name, vicinity only — no caching beyond TTL. **No `rating`** (Pro-tier field mask only; see addendum §F cost note).
 
 **Analytics canonical names** (supersedes old tracking-plan §3 `poi_type` / `accommodation_map_interacted`):
 - `map_section_viewed`

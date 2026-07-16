@@ -14,7 +14,7 @@ Concise extracts from [`../prd-phase2.md`](../prd-phase2.md). Each file maps to 
 | [02-glossary-and-priority.md](02-glossary-and-priority.md) | 3–4 | Glossary, build sequence, priorities |
 | [03-phase2-functional-requirements.md](03-phase2-functional-requirements.md) | 5 (FR list) | FR-8–17 checklist |
 | [04-features-auth.md](04-features-auth.md) | 5.1, FR-8 | Google + magic link, GDPR, roles |
-| [05-features-resort-map.md](05-features-resort-map.md) | 5.2, FR-9 | Leaflet map, Google Places proxy |
+| [05-features-resort-map.md](05-features-resort-map.md) | 5.2, FR-9 | Leaflet map, curated places + Google Places proxy |
 | [06-features-reviews-comments.md](06-features-reviews-comments.md) | 5.3, FR-10 | Reviews, comments, moderation API |
 | [07-features-ski-passport.md](07-features-ski-passport.md) | 5.4, FR-11 | Check-in, badges, passport photos |
 | [08-features-trip-skeleton.md](08-features-trip-skeleton.md) | 5.5, FR-12 | Trip template, 5-trip quota, AI handoff |
