@@ -2,7 +2,7 @@ baseline_commit: ef2d7ef
 
 # Story 11.6: Category Pin Shapes
 
-Status: ready-for-dev
+Status: done
 
 <!-- Follow-up to Story 11.3 — distinguish API pins by category shape, not just color. Depends on Mapbox migration (11.5) for the marker rendering primitive. -->
 
@@ -27,6 +27,15 @@ so that I can tell restaurants, transport, accommodation, etc. apart at a glance
 | Icon source | `lucide-react` (already a project dependency — no new asset pipeline) |
 | Curated ("Powri pick") pins | **Unchanged** — stay the black sparkle/star for every category (11.3 PO decision preserved). Only **API** pins get category shapes. |
 | Resort-center pin | Unchanged (accent blue dot) |
+
+### PO decisions (2026-07-17 — color extension, session)
+
+| Topic | Decision |
+|-------|----------|
+| Per-category colors | API pin badge **and** selected category chip share the same Powri-token color per category |
+| Pin badge style | White lucide icon on solid category-color circle |
+| Unselected chips | Unchanged — white surface, divider border, primary text |
+| Palette | restaurant `accent-warm` · accommodation `cosmic-opt-1` · supermarket `cosmic-opt-4` · convenience `text-primary` · onsen `cosmic-opt-2` · attraction `badge-gold` · transport `cosmic-opt-3` |
 
 ---
 
@@ -61,18 +70,18 @@ so that I can tell restaurants, transport, accommodation, etc. apart at a glance
 
 Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.md).
 
-- [ ] **Unit (Vitest):** category → icon mapping test (no duplicate icons across categories, all 7 covered)
-- [ ] **Lint / build / unit:** `npm run lint && npm run build && npm run test:unit`
-- [ ] **Manual QA (PO):** `myoko-kogen` — toggle each chip, confirm the API pins for that category show the right icon shape; curated sparkle pin still black/unchanged
+- [x] **Unit (Vitest):** category → icon mapping test (no duplicate icons across categories, all 7 covered)
+- [x] **Lint / build / unit:** `npm run lint && npm run build && npm run test:unit`
+- [x] **Manual QA (PO):** `myoko-kogen` — toggle each chip, confirm the API pins for that category show the right icon shape; curated sparkle pin still black/unchanged
 
 ---
 
 ## Tasks / Subtasks
 
-- [ ] `web/src/components/map/mapIcons.ts`: category → `lucide-react` icon map for API pins (AC: 1, 3)
-- [ ] Render the icon inside the existing grey circular badge markup (not a bare icon with no background) (AC: 1)
-- [ ] `web/src/lib/map/pinIcons.test.ts`: mapping coverage/no-duplicates test (AC: 4)
-- [ ] Run full verification commands
+- [x] `web/src/components/map/mapIcons.ts`: category → `lucide-react` icon map for API pins (AC: 1, 3)
+- [x] Render the icon inside the existing grey circular badge markup (not a bare icon with no background) (AC: 1)
+- [x] `web/src/lib/map/pinIcons.test.ts`: mapping coverage/no-duplicates test (AC: 4)
+- [x] Run full verification commands
 
 ---
 
@@ -108,6 +117,8 @@ Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.
 ## Change Log
 
 - 2026-07-17: Story created — PO follow-up request for per-category pin shapes.
+- 2026-07-17: Implemented per-category lucide icons + Powri-token colors on API pins and selected chips (PO-approved palette).
+- 2026-07-17: Manual QA pass — story marked done.
 
 ---
 
@@ -115,8 +126,27 @@ Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.
 
 ### Agent Model Used
 
+Composer
+
 ### Debug Log References
+
+- ESLint `react-hooks/static-components`: resolved by using `createElement` for dynamic lucide icons instead of `<Icon />` variable assignment.
 
 ### Completion Notes List
 
+- Added `web/src/lib/map/categoryVisuals.ts` — single source of truth for category → icon + color (shared by pins and chips).
+- `ApiPoiPin` accepts `chipKey`, renders white lucide icon on 20px category-color circle; curated/resort pins unchanged.
+- `CategoryChips` selected state uses matching per-category background colors.
+- Added `--color-badge-gold` to `tokens.css` (Phase 2 UX token, used for attraction).
+- Unit tests cover icon name uniqueness and color coverage for all 7 chip keys.
+- `npm run lint && npm run build && npm run test:unit` — all pass (250 tests).
+
 ### File List
+
+- `web/src/lib/map/categoryVisuals.ts` (new)
+- `web/src/components/map/mapIcons.tsx` (modified)
+- `web/src/components/map/ResortMapboxMap.tsx` (modified)
+- `web/src/components/map/CategoryChips.tsx` (modified)
+- `web/src/lib/map/pinIcons.test.ts` (modified)
+- `web/src/styles/tokens.css` (modified)
+- `_powri/implementation-artifacts/sprint-status.yaml` (modified)
