@@ -1,5 +1,5 @@
 # generated: 2026-06-12
-# last_updated: 2026-07-17T15:10:00
+# last_updated: 2026-07-17T23:10:00
 # project: japan_winter_sport
 # project_key: NOKEY
 # tracking_system: file-system
@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-07-17T18:35:00
+last_updated: 2026-07-17T23:10:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -160,7 +160,7 @@ development_status:
   10-4-saved-list-page-login-merge: done
   epic-10-retrospective: done
 
-  epic-11: in-progress
+  epic-11: done
   11-1-resort-geo-fields-content-pipeline: done
   11-2-google-places-proxy-cache: done
   11-3-resort-map-section-ui: done
@@ -168,9 +168,9 @@ development_status:
   11-5-mapbox-migration: done
   11-6-category-pin-shapes: done
   11-7-chip-all-model-ski-resort-category: done
-  11-8-nearby-radius-pin-density-tuning: ready-for-dev
-  11-9-poi-detail-ux-desktop-split-view: ready-for-dev
-  epic-11-retrospective: optional
+  11-8-nearby-radius-pin-density-tuning: done
+  11-9-poi-detail-ux-desktop-split-view: done
+  epic-11-retrospective: done
 
   epic-12: backlog
   12-1-experience-section-review-list: backlog

@@ -2,7 +2,7 @@ baseline_commit: ef2d7ef
 
 # Story 11.8: Nearby Radius & Pin Density Tuning
 
-Status: ready-for-dev
+Status: done
 
 <!-- Follow-up to Story 11.3/11.2 — pins feel "too far" due to viewport clipping, not an API bug. Tightens radius/cap and adds auto-fit-bounds. Depends on Mapbox migration (11.5). -->
 
@@ -73,19 +73,19 @@ The 5 km radius is **already correctly applied** server-side (`NEARBY_SEARCH_RAD
 
 Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.md).
 
-- [ ] **Unit (Vitest):** radius/cap constants test; a pure bounds-calculation helper (extract `computeBounds(places, resortCenter)` into `web/src/lib/map/` so it's unit-testable without mounting Mapbox) covering: normal case, zero-pins fallback, single-point fallback
-- [ ] **Lint / build / unit:** `npm run lint && npm run build && npm run test:unit`
-- [ ] **Manual QA (PO):** `myoko-kogen` — switch between categories, confirm the map re-frames to show all active pins without manual panning; confirm empty-category and loading states don't zoom oddly
+- [x] **Unit (Vitest):** radius/cap constants test; a pure bounds-calculation helper (extract `computeBounds(places, resortCenter)` into `web/src/lib/map/` so it's unit-testable without mounting Mapbox) covering: normal case, zero-pins fallback, single-point fallback
+- [x] **Lint / build / unit:** `npm run lint && npm run build && npm run test:unit`
+- [x] **Manual QA (PO):** `myoko-kogen` — switch between categories, confirm the map re-frames to show all active pins without manual panning; confirm empty-category and loading states don't zoom oddly
 
 ---
 
 ## Tasks / Subtasks
 
-- [ ] `web/src/lib/places/searchNearby.ts`: `NEARBY_SEARCH_RADIUS_METERS = 3000`, `NEARBY_SEARCH_MAX_RESULTS = 8` (AC: 1)
-- [ ] Update associated unit tests for new constants (AC: 2)
-- [ ] Extract `computeBounds()` helper in `web/src/lib/map/` (pure function: places + resort center → bounds or null) (AC: 4-6)
-- [ ] `web/src/components/map/ResortMapboxMap.tsx`: call `fitBounds()` via map ref when the pin set changes, using `computeBounds()` (AC: 4-7)
-- [ ] Run full verification commands
+- [x] `web/src/lib/places/searchNearby.ts`: `NEARBY_SEARCH_RADIUS_METERS = 3000`, `NEARBY_SEARCH_MAX_RESULTS = 8` (AC: 1)
+- [x] Update associated unit tests for new constants (AC: 2)
+- [x] Extract `computeBounds()` helper in `web/src/lib/map/` (pure function: places + resort center → bounds or null) (AC: 4-6)
+- [x] `web/src/components/map/ResortMapboxMap.tsx`: call `fitBounds()` via map ref when the pin set changes, using `computeBounds()` (AC: 4-7)
+- [x] Run full verification commands
 
 ---
 
@@ -115,6 +115,8 @@ Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.
 ## Change Log
 
 - 2026-07-17: Story created — PO follow-up request after diagnosing viewport-clipping root cause for "pins feel too far."
+- 2026-07-17: Implemented — radius 3 km / cap 8, `computeBounds` helper, auto-fit-bounds (40px padding, 300ms animation, maxZoom = mapDefaultZoom); immediate reframe on chip selection + reframe when `pinPlaces` updates.
+- 2026-07-17: PO manual QA passed on `myoko-kogen` — story marked done.
 
 ---
 
@@ -122,8 +124,27 @@ Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.
 
 ### Agent Model Used
 
+Composer
+
 ### Debug Log References
+
+- PO clarifications: 40px padding; immediate reframe on selection then on pinPlaces update; animated fitBounds with maxZoom = mapDefaultZoom; new `searchNearby.test.ts`; branch `feature/11-8-nearby-radius-pin-density-tuning` from merged main.
 
 ### Completion Notes List
 
+- AC 1–2: `NEARBY_SEARCH_RADIUS_METERS` → 3000, `NEARBY_SEARCH_MAX_RESULTS` → 8; new `searchNearby.test.ts` asserts request body.
+- AC 3: No cache invalidation — existing `places_cache` rows refetch naturally on TTL expiry (default 168h).
+- AC 4–7: `computeBounds()` returns `[[west,south],[east,north]]` or `null` (resort-only fallback). `ResortMapboxMap` calls `fitBounds` / `flyTo` via map ref on `selectionKey` + `places` change; redundant identical fits skipped via fit-key guard.
+- Verification: `npm run lint`, `npm run build`, `npm run test:unit` — all pass (266 tests).
+- PO manual QA on `myoko-kogen` confirmed category switching reframes correctly; empty/loading states behave as expected.
+
 ### File List
+
+- `web/src/lib/places/searchNearby.ts`
+- `web/src/lib/places/searchNearby.test.ts` (new)
+- `web/src/lib/map/computeBounds.ts` (new)
+- `web/src/lib/map/computeBounds.test.ts` (new)
+- `web/src/components/map/ResortMapboxMap.tsx`
+- `web/src/components/map/ResortMapSection.tsx`
+- `_powri/implementation-artifacts/sprint-status.yaml`
+- `_powri/implementation-artifacts/Epic-11/11-8-nearby-radius-pin-density-tuning.md`
