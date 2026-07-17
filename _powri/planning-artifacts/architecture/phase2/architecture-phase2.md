@@ -36,7 +36,7 @@ user_name: Mindodoo
 | FR | Architectural components |
 |----|-------------------------|
 | **FR-8** Auth | Supabase Auth (Google + magic link), `@supabase/ssr`, middleware session refresh, `profiles` table |
-| **FR-9** Map | Leaflet + OSM tiles (client), `/api/places/nearby` (curated + Google Places merge/dedup), `places_cache`, resort `latitude`/`longitude`/`curated_map_places` in content |
+| **FR-9** Map | Mapbox + `react-map-gl` (client), `/api/places/nearby` (curated + Google Places merge/dedup), `places_cache`, resort `latitude`/`longitude`/`curated_map_places` in content |
 | **FR-10** Reviews/comments | `reviews`, `comments`, `review_photos`, Experience section client island, admin PATCH routes |
 | **FR-11** Passport/badges | `passport_check_ins`, `user_badges`, `lib/badges/evaluate.ts` |
 | **FR-12** Trips | `trips`, `trip_days`, `trip_activities`, quota trigger, `lib/trips/templates.ts` |
@@ -57,15 +57,14 @@ user_name: Mindodoo
 | Database | None | **Supabase PostgreSQL** |
 | Auth | None | **Supabase Auth** + `@supabase/ssr` |
 | File storage | None | **Supabase Storage** (review + passport photos) |
-| Maps | External trail map link | **Leaflet** + **react-leaflet** (dynamic import, SSR off) |
+| Maps | External trail map link | **Mapbox** + **react-map-gl** (dynamic import, SSR off) |
 | POI data | — | **Google Places API** (server proxy) |
 | UGC sanitize | Chat input only | **isomorphic-dompurify** or strip-html on all UGC |
 
 **New npm dependencies (Epic P0):**
 
 ```bash
-cd web && npm install @supabase/supabase-js @supabase/ssr leaflet react-leaflet
-npm install -D @types/leaflet
+cd web && npm install @supabase/supabase-js @supabase/ssr mapbox-gl react-map-gl
 ```
 
 ---
@@ -227,7 +226,7 @@ GET /api/places/nearby?resortSlug=niseko-united&category=restaurant
 5. Response: { places: [...], attribution: "Powered by Google" }
 ```
 
-**CSP update:** allow Leaflet tile domains (`*.tile.openstreetmap.org`) in `lib/security/csp.ts`.
+**CSP update:** allow Mapbox hosts (`api.mapbox.com`, `*.tiles.mapbox.com`, `events.mapbox.com`) and `worker-src blob:` in `lib/security/csp.ts`.
 
 ---
 
@@ -300,7 +299,7 @@ Implement `DesktopTopNav` in `AppShell`; use Tailwind `md:` breakpoint consisten
 ### 6.5 Map loading
 
 ```tsx
-// dynamic import — Leaflet requires window
+// dynamic import — Mapbox GL JS requires window
 const ResortMapSection = dynamic(
   () => import('@/components/map/ResortMapSection'),
   { ssr: false, loading: () => <MapSkeleton /> }
@@ -396,7 +395,7 @@ GOOGLE_PLACES_API_KEY=              # server only
 | Photo MIME verify | Magic bytes check server-side |
 | CSRF | Same-origin + cookie auth (no custom CSRF token needed for JSON API) |
 | Admin routes | Session + `role === admin'` or service role |
-| CSP | Add OSM tile domains; Google attribution in UI not script |
+| CSP | Add Mapbox tile/style hosts + `worker-src blob:`; Google attribution in UI not script |
 | Rate limits | Extended policies §5 |
 
 ---
@@ -457,7 +456,7 @@ japan_winter_sport/
 | "No DB Phase 1" | Supabase PostgreSQL from Phase 2 |
 | "Deferred: Supabase auth" | **Implemented** |
 | "Deferred: Google Places" | **Implemented** |
-| "Deferred: Leaflet map" | **Implemented** (surroundings map) |
+| "Deferred: Leaflet map" | **Implemented** (surroundings map — Mapbox + react-map-gl) |
 | "Deferred: Plan tab" | **Trip skeleton** (AI fill still Phase 3) |
 | Reviews in phase-3 epic | **Phase 2** per PRD |
 
