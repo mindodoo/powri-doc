@@ -32,7 +32,7 @@ So that I trust peer experiences before my trip.
 | **Review sort / pagination** | **Newest first** (`created_at desc`). Initial fetch **50** reviews; **Load more** button if total > 50 (matches comment UX cap in addendum §M). |
 | **Badge chips on card** | Join `user_badges` for author; show up to **3** badge names as small caption chips using addendum §C definitions (`lib/badges/definitions.ts`). No badge evaluation logic (Epic 13). |
 | **Aggregate display** | Average to **one decimal** (e.g. `4.3`); warm amber stars (`text-accent-warm` / design token). Count copy: `"23 reviews"` / `"1 review"` / empty state below. |
-| **Zero reviews** | SSR aggregate shows **no star row** (or em dash) + count `"No reviews yet"`; client list shows empty state + Write CTA per UX (`experience.md` Reviews empty). |
+| **Zero reviews** | SSR aggregate shows **no star row** + count `"No reviews yet"` (`countZero`); client `ReviewList` shows **Write CTA only** — no second zero-count line. **Amended 2026-08-10 (Story 12.2 PO):** removed redundant `emptyState` copy that duplicated aggregate messaging. |
 | **Profile links** | Author name + avatar link to `/u/:username` even though **13.4** builds the page — href is correct; 404 until then is acceptable. |
 | **JSON-LD rich snippets** | **Out of scope 12.1** — visible aggregate in SSR HTML satisfies FR-14.3; structured data deferred to **15.4** if needed. |
 | **Dev seed data** | **Not required** — manual QA can insert rows via Supabase SQL or wait for **12.2**. Document sample INSERT in dev notes for PO. |
@@ -101,7 +101,7 @@ So that I trust peer experiences before my trip.
 
 18. **Given** zero reviews  
     **When** the list loads  
-    **Then** show empty copy **"No reviews yet — be the first"** (UX) + Write CTA (AC A shell)
+    **Then** show **Write CTA only** in the list (zero-count copy comes from SSR aggregate `countZero` — **amended 2026-08-10:** no separate list empty-state line)
 
 ### E. Write review CTA (shell — form is 12.2)
 
@@ -121,7 +121,7 @@ So that I trust peer experiences before my trip.
 
 ### G. i18n & accessibility
 
-22. **And** all user-visible strings live under `messages/en.json` → `resortDetail.experience.*` (section title, count pluralization, empty state, load more, write CTA, relative dates if not handled by `Intl`)
+22. **And** all user-visible strings live under `messages/en.json` → `resortDetail.experience.*` (section title, count pluralization, load more, write CTA, relative dates if not handled by `Intl`)
 
 23. **And** section has `aria-labelledby` pointing at section heading; star ratings expose accessible text (e.g. `"4 out of 5 stars"`)
 
@@ -137,7 +137,7 @@ Per [`docs/process/testing-strategy.md`](../../../docs/process/testing-strategy.
 - [x] **Content / resorts:** `npm run test:launch` (section mount must not break detail SSG)
 - [x] **Lint / build / unit:** `npm run lint && npm run build && npm run test:unit`
 - [x] **E2E:** optional note — full review flow deferred to 12.2; manual PO path below
-- [x] **Manual QA (PO):** resort with 0 reviews (empty + aggregate SSR); resort with seeded reviews (view source: aggregate in HTML, cards after hydration); guest reads without sign-in; guest Write → sign-in sheet; signed-in Write disabled; author link href `/u/:username`; photo strip scrolls
+- [x] **Manual QA (PO):** resort with 0 reviews (aggregate `countZero` + Write CTA in list — single zero-count line per PO amendment 2026-08-10); resort with seeded reviews (view source: aggregate in HTML, cards after hydration); guest reads without sign-in; guest Write → sign-in sheet; signed-in Write disabled; author link href `/u/:username`; photo strip scrolls
 
 ---
 
@@ -290,6 +290,7 @@ Composer (Cursor)
 - Half-star aggregate row (rounded to nearest 0.5); integer star rows on review cards.
 - Migration `005_review_photos_public_read.sql` adds anon SELECT on `review_photos` for published reviews — **apply on Supabase before PO manual QA with photos**.
 - Verification: `npm run lint`, `npm run build`, `npm run test:unit` (293 tests) pass. `test:launch` exits 1 due to pre-existing `NEXT_PUBLIC_CONTACT_EMAIL` env gate (unchanged by this story); build/SSG for all 20 resorts succeeds.
+- **2026-08-10 (Story 12.2 carry-forward):** PO confirmed zero-review UX uses aggregate `countZero` only; unused `emptyState` i18n key removed. AC 18 amended in both 12.1 and 12.2 artifacts.
 
 ### File List
 
@@ -326,3 +327,4 @@ Composer (Cursor)
 
 - 2026-08-07: Story 12.1 — Experience section shell, SSR aggregate, public reviews API, client review list (review).
 - 2026-08-07: PO manual QA sign-off — empty state, SSR aggregate, guest read, sign-in CTA, disabled Write for signed-in, author links, photo strip (done).
+- 2026-08-10: AC 18 / zero-review copy amended — `countZero` in aggregate only; list shows Write CTA without duplicate empty-state line (aligned with Story 12.2 PO decision).
