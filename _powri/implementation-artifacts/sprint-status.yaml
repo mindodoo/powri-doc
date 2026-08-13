@@ -1,5 +1,5 @@
 # generated: 2026-06-12
-# last_updated: 2026-08-07T17:30:00
+# last_updated: 2026-08-13T17:35:00
 # project: japan_winter_sport
 # project_key: NOKEY
 # tracking_system: file-system
@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-08-07T17:30:00
+last_updated: 2026-08-13T17:35:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -175,8 +175,9 @@ development_status:
   epic-12: in-progress
   12-1-experience-section-review-list: done
   12-2-submit-edit-review-photos: done
-  12-3-flat-comment-thread: backlog
-  12-4-report-content-admin-hide: backlog
+  12-2-1-review-photo-storage-r2: done
+  12-3-flat-comment-thread: deferred
+  12-4-report-content-admin-hide: done
   epic-12-retrospective: optional
 
   epic-13: backlog
