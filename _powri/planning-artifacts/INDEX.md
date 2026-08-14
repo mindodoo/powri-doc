@@ -13,6 +13,7 @@ Use this file to decide **what to read** before coding.
 |-------|---------|---------|
 | **PRD monolith** | [`prds/phase1/prd-phase1.md`](prds/phase1/prd-phase1.md) | [`prds/phase2/prd-phase2.md`](prds/phase2/prd-phase2.md) |
 | **PRD shards** | [`prds/phase1/shards/`](prds/phase1/shards/) — read-only | [`prds/phase2/shards/`](prds/phase2/shards/) — read-only |
+| **UX polish PRD** | — | [`prds/phase2/prd-epic-ux.md`](prds/phase2/prd-epic-ux.md) — **standalone**; not a shard of `prd-phase2.md` |
 | **Epic monolith** | [`epics/phase1/epics-phase1.md`](epics/phase1/epics-phase1.md) | [`epics/phase2/epics-phase2.md`](epics/phase2/epics-phase2.md) |
 | **Epic shards** | [`epics/phase1/shards/`](epics/phase1/shards/) — read-only | [`epics/phase2/shards/`](epics/phase2/shards/) — read-only |
 
@@ -40,6 +41,7 @@ Epic # matches the `epic_num` in sprint-status.yaml keys (e.g. `9-5-...` → Epi
 | 10 | **Phase 2 nav & saved (Epic 10)** | [`epics/phase2/shards/epic-10-nav-saved.md`](epics/phase2/shards/epic-10-nav-saved.md) → [`prds/phase2/shards/11-features-saved-resorts.md`](prds/phase2/shards/11-features-saved-resorts.md) · [`12-features-navigation.md`](prds/phase2/shards/12-features-navigation.md) | ~180 |
 | 11 | **Phase 2 map (Epic 11)** | [`epics/phase2/shards/epic-11-resort-map.md`](epics/phase2/shards/epic-11-resort-map.md) → [`prds/phase2/shards/05-features-resort-map.md`](prds/phase2/shards/05-features-resort-map.md) → `content-model.md` lat/lng | ~140 |
 | 12 | **Phase 2 reviews (Epic 12)** | [`epics/phase2/shards/epic-12-community-reviews.md`](epics/phase2/shards/epic-12-community-reviews.md) → [`prds/phase2/shards/06-features-reviews-comments.md`](prds/phase2/shards/06-features-reviews-comments.md) | ~180 |
+| epic-ux | **Post–v1 UX polish** (nav, detail layout, chrome) | [`prds/phase2/prd-epic-ux.md`](prds/phase2/prd-epic-ux.md) → [`../implementation-artifacts/UX/`](../implementation-artifacts/UX/) | ~150 |
 | 13 | **Phase 2 passport & profile (Epic 13)** | [`epics/phase2/shards/epic-13-passport-profile.md`](epics/phase2/shards/epic-13-passport-profile.md) → [`prds/phase2/shards/07-features-ski-passport.md`](prds/phase2/shards/07-features-ski-passport.md) · [`13-features-public-profile.md`](prds/phase2/shards/13-features-public-profile.md) | ~200 |
 | 14 | **Phase 2 trips (Epic 14)** | [`epics/phase2/shards/epic-14-trip-planning.md`](epics/phase2/shards/epic-14-trip-planning.md) → [`prds/phase2/shards/08-features-trip-skeleton.md`](prds/phase2/shards/08-features-trip-skeleton.md) | ~140 |
 | 15 | **Phase 2 launch (Epic 15)** | [`epics/phase2/shards/epic-15-phase2-launch.md`](epics/phase2/shards/epic-15-phase2-launch.md) → [`prds/phase2/shards/09-features-ai-stubs.md`](prds/phase2/shards/09-features-ai-stubs.md) · [`10-features-seo.md`](prds/phase2/shards/10-features-seo.md) · [`16-metrics-analytics-decisions.md`](prds/phase2/shards/16-metrics-analytics-decisions.md) | ~200 |
@@ -76,6 +78,7 @@ Stories, retrospectives, and CI logs live under [`../implementation-artifacts/`]
 | 10 | [`Epic-10/`](../implementation-artifacts/Epic-10/) | Navigation & saved resorts |
 | 11 | [`Epic-11/`](../implementation-artifacts/Epic-11/) | Resort map & surroundings |
 | 12 | [`Epic-12/`](../implementation-artifacts/Epic-12/) | Community reviews (12.3 comments deferred) |
+| epic-ux | [`UX/`](../implementation-artifacts/UX/) | Post–v1 UX polish (stories `ux-1`–`ux-13`) |
 | CI | [`CI/`](../implementation-artifacts/CI/) | Testing & quality gates |
 | Retros | [`Epic-Retro/`](../implementation-artifacts/Epic-Retro/) | Epic retrospectives |
 | — | [`deferred-work.md`](../implementation-artifacts/deferred-work.md) | Cross-story deferred items |
@@ -97,6 +100,7 @@ Stories, retrospectives, and CI logs live under [`../implementation-artifacts/`]
 | FR checklist | [`prds/phase2/shards/03-phase2-functional-requirements.md`](prds/phase2/shards/03-phase2-functional-requirements.md) |
 | Addendum | [`prds/phase2/addendum.md`](prds/phase2/addendum.md) |
 | Pre-implementation gate | [`prds/phase2/readiness-checklist.md`](prds/phase2/readiness-checklist.md) |
+| **Epic UX (standalone)** | [`prds/phase2/prd-epic-ux.md`](prds/phase2/prd-epic-ux.md) — post–v1 polish; do **not** regenerate into `shards/` |
 
 ### Epics
 

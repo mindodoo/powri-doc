@@ -1,9 +1,9 @@
 # generated: 2026-06-12
-# last_updated: 2026-08-13T17:50:00
+# last_updated: 2026-08-14T16:22:00
 # project: japan_winter_sport
 # project_key: NOKEY
 # tracking_system: file-system
-# story_location: _powri/implementation-artifacts (stories in Epic-<N>/, retros in Epic-Retro/, CI in CI/)
+# story_location: _powri/implementation-artifacts (stories in Epic-<N>/ or UX/, retros in Epic-Retro/, CI in CI/)
 
 # STATUS DEFINITIONS:
 # ==================
@@ -48,11 +48,11 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-08-13T17:50:00
+last_updated: 2026-08-14T16:22:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
-story_location: _powri/implementation-artifacts  # stories: Epic-<N>/ · retros: Epic-Retro/ · CI: CI/
+story_location: _powri/implementation-artifacts  # stories: Epic-<N>/ · UX/ · retros: Epic-Retro/ · CI: CI/
 
 development_status:
   epic-1: done
@@ -179,6 +179,22 @@ development_status:
   12-3-flat-comment-thread: deferred
   12-4-report-content-admin-hide: done
   epic-12-retrospective: done
+
+  epic-ux: in-progress
+  ux-1-highlight-lowlight-boxes: done
+  ux-2-mountain-stats-terrain-grids: ready-for-dev
+  ux-3-around-resort-after-trailmap: ready-for-dev
+  ux-4-report-review-modal-width: ready-for-dev
+  ux-5-sign-out-no-signin-flash: ready-for-dev
+  ux-6-resort-back-to-explore: ready-for-dev
+  ux-7-account-remove-back: ready-for-dev
+  ux-8-production-favicon: ready-for-dev
+  ux-9-mobile-explore-search-icon: ready-for-dev
+  ux-10-powri-nav-logo: ready-for-dev
+  ux-11-responsive-resort-list-grid: ready-for-dev
+  ux-12-auto-app-version: ready-for-dev
+  ux-13-desktop-avatar-dropdown: ready-for-dev
+  epic-ux-retrospective: optional
 
   epic-13: backlog
   13-1-manual-check-in-passport-photo: backlog
