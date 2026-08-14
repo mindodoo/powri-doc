@@ -74,6 +74,8 @@ Stories, retrospectives, and CI logs live under [`../implementation-artifacts/`]
 | 8 | [`Epic-8/`](../implementation-artifacts/Epic-8/) | Quiz cosmic mode UX v2 |
 | 9 | [`Epic-9/`](../implementation-artifacts/Epic-9/) | Supabase foundation & auth |
 | 10 | [`Epic-10/`](../implementation-artifacts/Epic-10/) | Navigation & saved resorts |
+| 11 | [`Epic-11/`](../implementation-artifacts/Epic-11/) | Resort map & surroundings |
+| 12 | [`Epic-12/`](../implementation-artifacts/Epic-12/) | Community reviews (12.3 comments deferred) |
 | CI | [`CI/`](../implementation-artifacts/CI/) | Testing & quality gates |
 | Retros | [`Epic-Retro/`](../implementation-artifacts/Epic-Retro/) | Epic retrospectives |
 | — | [`deferred-work.md`](../implementation-artifacts/deferred-work.md) | Cross-story deferred items |

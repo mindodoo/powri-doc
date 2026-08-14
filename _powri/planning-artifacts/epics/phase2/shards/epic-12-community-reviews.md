@@ -2,9 +2,10 @@
 
 # Epic 12: Community Reviews & Comments
 
-**Stories:** 12.1–12.4 · **Status:** In progress · **Phase:** 2  
+**Stories:** 12.1–12.4 · **Status:** Done · **Phase:** 2  
 **FRs:** FR-10 · **NFRs:** NFR-10, 11, 12  
 **Depends on:** Epic 9 complete · **Legal:** Story 15.3 before public launch  
+**Retrospective:** [`epic-12-retro-2026-08-13.md`](../../../../implementation-artifacts/Epic-Retro/epic-12-retro-2026-08-13.md)  
 **Full ACs:** [`epics-phase2.md`](../epics-phase2.md) — Epic 12
 
 > **Note:** Moved from Phase 3 [`phase-3-user-community.md`](../../phase1/shards/phase-3-user-community.md) per Phase 2 PRD.
@@ -25,7 +26,7 @@
 | 12.2 | done | Submit/edit review + photos |
 | 12.2.1 | done | R2 photo storage |
 | **12.3** | **deferred** | Flat comment thread — out of Phase 2 |
-| **12.4** | next | Report review + admin hide API |
+| **12.4** | done | Report review + admin hide API |
 
 **Implementation order (updated):**
 
@@ -66,6 +67,6 @@
 
 - [x] Guest reads reviews without login
 - [x] One review per user per resort; edit works
-- [ ] Report → admin hide → content disappears
+- [x] Report → admin hide → content disappears
 - [x] Photo limits enforced client + server
 - [ ] ~~Flat comment thread~~ deferred
