@@ -39,3 +39,12 @@
 ## Deferred from: code review of ux-5-sign-out-no-signin-flash (2026-08-21)
 
 - `auth_sign_out` is listed in the tracking plan / `phase2Events.ts` but has never been instrumented (`instrumentationFiles: []`); AC5 only requires it to keep firing if it already did — pre-existing analytics gap, not introduced by UX-5 (`web/src/lib/analytics/phase2Events.ts:33-35`)
+
+## Deferred from: code review of ux-7-account-remove-back (2026-08-21)
+
+- UX-7 e2e could click hamburger on `/account` and assert `app-menu-sheet` opens — mirrors Saved test; visibility + no-Back guard is sufficient for merge (`web/e2e/smoke.spec.ts:298-308`)
+
+## Deferred from: code review of ux-9-mobile-explore-search-icon (2026-08-21)
+
+- UX-9 e2e does not assert `search_focused` with `surface=explore` — optional; `ResortSearchField` receives `listContext="explore"` by inspection (`web/src/components/layout/DiscoveryTopBar.tsx:128`)
+- Explore search-panel close (X toggle) not e2e-automated — mirrors Home; open + results assertion sufficient for merge (`web/e2e/smoke.spec.ts:312-327`)

@@ -1,5 +1,5 @@
 # generated: 2026-06-12
-# last_updated: 2026-08-21T15:23:00
+# last_updated: 2026-08-21T17:25:00
 # project: japan_winter_sport
 # project_key: NOKEY
 # tracking_system: file-system
@@ -48,7 +48,7 @@
 # - deferred: Out of Phase 1 scope; gated on monetisation/sponsorship (Phase 3)
 
 generated: 2026-06-12
-last_updated: 2026-08-21T15:23:00
+last_updated: 2026-08-21T16:50:00
 project: japan_winter_sport
 project_key: NOKEY
 tracking_system: file-system
@@ -187,9 +187,9 @@ development_status:
   ux-4-report-review-modal-width: done
   ux-5-sign-out-no-signin-flash: done
   ux-6-resort-back-to-explore: done
-  ux-7-account-remove-back: ready-for-dev
-  ux-8-production-favicon: ready-for-dev
-  ux-9-mobile-explore-search-icon: ready-for-dev
+  ux-7-account-remove-back: done
+  ux-8-production-favicon: done
+  ux-9-mobile-explore-search-icon: done
   ux-10-powri-nav-logo: ready-for-dev
   ux-11-responsive-resort-list-grid: ready-for-dev
   ux-12-auto-app-version: ready-for-dev
