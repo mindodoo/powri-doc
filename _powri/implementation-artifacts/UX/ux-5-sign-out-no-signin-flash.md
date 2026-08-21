@@ -1,6 +1,10 @@
+---
+baseline_commit: 90c462847526fa2cff517054b8356a97b4b7b7d7
+---
+
 # Story UX-5: Sign-out with no sign-in flash
 
-Status: ready-for-dev
+Status: done
 
 Version when done: **2.12.2.5**
 
@@ -24,19 +28,24 @@ so that I never see a blink of a sign-in screen I cannot use.
 
 ## Testing & Definition of Done
 
-- [ ] **Unit:** N/A unless extracting a `signOutToHome()` helper
-- [ ] **Quiz / scoring:** N/A
-- [ ] **Analytics:** Keep existing `auth_sign_out`; no new event required
-- [ ] **Content / resorts:** N/A
-- [ ] **Around-area labels:** N/A
-- [ ] **User-facing flow:** Manual: Account → Sign out — no Account guest CTA. Playwright: optional assert URL `/` without `/account` guest copy
-- [ ] **Manual QA:** PO — blink gone
+- [x] **Unit:** `web/src/lib/auth/signOutToHome.test.ts` — guest CTA predicate + `signOutThenGoHome` order
+- [x] **Quiz / scoring:** N/A
+- [x] **Analytics:** `auth_sign_out` remains in the registry; it was not fired in app code before this story and is not newly wired
+- [x] **Content / resorts:** N/A
+- [x] **Around-area labels:** N/A
+- [x] **User-facing flow:** Guest CTA gated by `isSigningOut`; `location.replace('/')` after sign-out. Playwright optional — not added (needs live session)
+- [x] **Manual QA:** PO — blink gone
 
 ## Tasks / Subtasks
 
-- [ ] Fix `handleSignOut` so Account cannot re-render as guest before navigation (AC: 1–2)
-- [ ] Keep `window.location.href = '/'` (full load is OK) **or** navigate first then sign out — pick the one that cannot paint the guest Account block (AC: 1–3)
-- [ ] Confirm `AccountDangerZone` delete path still goes Home (already `location.href = '/'`)
+- [x] Fix `handleSignOut` so Account cannot re-render as guest before navigation (AC: 1–2)
+- [x] Keep `window.location.href = '/'` (full load is OK) **or** navigate first then sign out — pick the one that cannot paint the guest Account block (AC: 1–3)
+- [x] Confirm `AccountDangerZone` delete path still goes Home (already `location.href = '/'`)
+
+### Review Findings
+
+- [x] [Review][Patch] Delete path should reuse `signOutThenGoHome` for consistent navigate-on-failure [`AccountDangerZone.tsx:59-66`]
+- [x] [Review][Defer] `auth_sign_out` never instrumented in app code — AC5 satisfied vacuously; registry `instrumentationFiles: []` pre-dates this story [`phase2Events.ts:33-35`] — deferred, pre-existing analytics gap
 
 ## Dev Notes
 
@@ -63,10 +72,49 @@ so that I never see a blink of a sign-in screen I cannot use.
 
 ### Agent Model Used
 
-Cursor Grok 4.6 (create-story)
+Cursor Grok 4.6 (create-story); Cursor Grok 4.6 (dev-story)
 
 ### Debug Log References
 
+- `npm run lint`: 0 errors, 1 pre-existing warning (`supabaseStorage.ts` unused `contentType`)
+- `npm run build`: pass
+- `npm run test:unit`: 98 files, 469 tests pass
+- `npm run test:launch`: fails on missing `NEXT_PUBLIC_CONTACT_EMAIL` (pre-existing env; not caused by this change)
+- `AuthProvider`: `SIGNED_OUT` does not call `openSignIn`; SignInSheet only for user CTA, `auth_error`, and `deletion_pending` — no code change
+
 ### Completion Notes List
 
+- 2026-08-21: Lifted `isSigningOut` to `AccountPageClient` via `onLeavingAccount` so the guest “sign in required” CTA cannot paint after `signOut()` clears the session. Navigation uses `window.location.replace('/')` after sign-out (full load). Delete-account path also sets the leave flag and replace-Home. No `/sign-in` route. `auth_sign_out` was not previously instrumented; left unchanged.
+- 2026-08-21: Code review patch applied — `AccountDangerZone` delete path uses `signOutThenGoHome`.
+
 ### File List
+
+- `_powri/implementation-artifacts/UX/ux-5-sign-out-no-signin-flash.md`
+- `_powri/implementation-artifacts/sprint-status.yaml`
+- `web/src/lib/auth/signOutToHome.ts`
+- `web/src/lib/auth/signOutToHome.test.ts`
+- `web/src/components/account/AccountPageClient.tsx`
+- `web/src/components/account/AccountSettingsForm.tsx`
+- `web/src/components/account/AccountDangerZone.tsx`
+
+### Change Log
+
+- 2026-08-21: Implemented sign-out → Home with no Account guest CTA flash (`isSigningOut` gate + `location.replace`).
+- 2026-08-21: Code review patch — delete path uses `signOutThenGoHome` (same finally-navigate as sign-out).
+- 2026-08-21: Code review complete; story marked done.
+
+### Review Findings (summary)
+
+**Outcome: Approve** — AC 1–4 implemented; AC 5 vacuously met. Core fix (`isSigningOut` gate + `signOutThenGoHome`) correctly prevents guest CTA flash.
+
+**Dismissed (noise / out of scope):** dual `isSigningOut` state in form+parent (works); optional Playwright omitted per story; `AuthProvider` unchanged by design; `onLeavingAccount` prop drill acceptable; untracked helper files are commit hygiene not logic defects.
+
+### Senior Developer Review (AI)
+
+**Review date:** 2026-08-21  
+**Outcome:** Approve
+
+#### Action Items
+
+- [x] [Review][Patch] Delete path should reuse `signOutThenGoHome` [`AccountDangerZone.tsx:59-66`]
+- [x] [Review][Defer] `auth_sign_out` not wired — pre-existing; AC5 literal pass [`phase2Events.ts:33-35`]

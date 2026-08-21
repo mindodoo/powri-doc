@@ -35,3 +35,7 @@
 - `isNotFoundError` treats any HTTP 404 status as "not found" (via the `$metadata.httpStatusCode === 404` fallback), which could also mask a genuinely wrong bucket/endpoint (e.g. `NoSuchBucket` also returns 404) as a benign "not yet migrated" state (`web/src/lib/reviews/storage/r2Storage.ts:25-33`)
 - `SupabaseReviewPhotoStorage.createUploadUrl` ignores its `contentType` parameter while `R2ReviewPhotoStorage` pins `ContentType` on the presigned PUT — the shared `ReviewPhotoStorage` interface's content-type enforcement at upload time silently differs by provider; low risk since the final compressed content-type is always set correctly at `overwrite()` (`web/src/lib/reviews/storage/supabaseStorage.ts`)
 - Full enforcement of a max-upload-size on the R2 bucket needs an R2 bucket-level policy or a presigned-POST redesign with size-range conditions — infra/PO decision, not a pure code change (`web/src/lib/reviews/storage/r2Storage.ts:99-113`)
+
+## Deferred from: code review of ux-5-sign-out-no-signin-flash (2026-08-21)
+
+- `auth_sign_out` is listed in the tracking plan / `phase2Events.ts` but has never been instrumented (`instrumentationFiles: []`); AC5 only requires it to keep firing if it already did — pre-existing analytics gap, not introduced by UX-5 (`web/src/lib/analytics/phase2Events.ts:33-35`)
