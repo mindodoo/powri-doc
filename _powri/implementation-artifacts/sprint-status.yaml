@@ -1,5 +1,5 @@
 # generated: 2026-06-12
-# last_updated: 2026-08-21T10:57:00
+# last_updated: 2026-08-21T13:21:00
 # project: japan_winter_sport
 # project_key: NOKEY
 # tracking_system: file-system
@@ -183,7 +183,7 @@ development_status:
   epic-ux: in-progress
   ux-1-highlight-lowlight-boxes: done
   ux-2-mountain-stats-terrain-grids: done
-  ux-3-around-resort-after-trailmap: ready-for-dev
+  ux-3-around-resort-after-trailmap: done
   ux-4-report-review-modal-width: ready-for-dev
   ux-5-sign-out-no-signin-flash: ready-for-dev
   ux-6-resort-back-to-explore: ready-for-dev
